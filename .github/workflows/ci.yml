@@ -1,0 +1,87 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+# A newer push to the same branch or pull request cancels the run it replaces.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: test (Node ${{ matrix.node }}, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        node: [20, 22, 24]
+        include:
+          - os: windows-latest
+            node: 22
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Tests
+        run: npm test
+      - name: Sample report and check catalog are up to date
+        run: npm run check:generated
+
+  action:
+    # Runs the GitHub Action from this checkout against the fictional fixture. No key needed.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Run the action on a saved snapshot
+        id: audit
+        uses: ./
+        with:
+          input: test/fixtures/snapshot.json
+          config: examples/.statsig-audit.json
+          output: report.md
+      - name: Check the report and the outputs
+        env:
+          REPORT: ${{ steps.audit.outputs.report }}
+          FINDINGS: ${{ steps.audit.outputs.findings }}
+          HIGH: ${{ steps.audit.outputs.high }}
+        run: |
+          test "$REPORT" = "report.md"
+          diff report.md examples/sample-report.md
+          test "$FINDINGS" -gt 0
+          test "$HIGH" -gt 0
+      - name: Run again with fail-on high
+        id: strict
+        continue-on-error: true
+        uses: ./
+        with:
+          input: test/fixtures/snapshot.json
+          format: json
+          fail-on: high
+          job-summary: "false"
+      - name: Check that fail-on failed the step and still wrote the report
+        env:
+          OUTCOME: ${{ steps.strict.outcome }}
+        run: |
+          test "$OUTCOME" = "failure"
+          node -e "JSON.parse(require('fs').readFileSync('statsig-audit-report.json', 'utf8'))"
+
+  plugin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - name: Validate the Claude Code marketplace, plugin manifest and skill
+        run: |
+          npx -y @anthropic-ai/claude-code@2.1.295 plugin validate . --strict
+          npx -y @anthropic-ai/claude-code@2.1.295 plugin validate .claude-plugin/plugin.json --strict
+          npx -y @anthropic-ai/claude-code@2.1.295 plugin validate skills --strict

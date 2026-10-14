@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/ardaasaroglu/statsig-audit/main/docs/report.schema.json",
+  "title": "statsig-audit JSON report",
+  "description": "The report written by statsig-audit --format json. schemaVersion changes only when a field is removed or changes meaning. A later tool version may add optional fields and lists them in its own copy of this file, so validate a report against the schema from the same tool version.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "tool", "evaluatedAt", "snapshot", "summary", "checks", "findings", "suppressed"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "const": "statsig-audit" },
+        "version": { "type": "string" }
+      }
+    },
+    "evaluatedAt": { "type": "string", "format": "date-time", "description": "The reference time ages were counted to." },
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fetchedAt", "source", "projectName", "auditLogDays", "deep", "requests"],
+      "properties": {
+        "fetchedAt": { "type": ["string", "null"], "format": "date-time" },
+        "source": { "type": "string", "description": "console-api, mcp, fixture, file, or whatever a saved snapshot says." },
+        "projectName": { "type": ["string", "null"] },
+        "auditLogDays": { "type": ["integer", "null"] },
+        "deep": { "type": "boolean" },
+        "requests": { "type": ["integer", "null"], "description": "GET requests made in this run, or null when a saved snapshot was read." }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["findings", "bySeverity", "suppressed", "score", "inventory"],
+      "properties": {
+        "findings": { "type": "integer", "minimum": 0 },
+        "bySeverity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["high", "medium", "low"],
+          "properties": {
+            "high": { "type": "integer", "minimum": 0 },
+            "medium": { "type": "integer", "minimum": 0 },
+            "low": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "suppressed": { "type": "integer", "minimum": 0 },
+        "score": {
+          "description": "Share of audited entities with no high or medium finding, or null when nothing was audited.",
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["value", "cleanEntities", "auditedEntities"],
+              "properties": {
+                "value": { "type": "integer", "minimum": 0, "maximum": 100 },
+                "cleanEntities": { "type": "integer", "minimum": 0 },
+                "auditedEntities": { "type": "integer", "minimum": 1 }
+              }
+            }
+          ]
+        },
+        "inventory": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["gates", "dynamicConfigs", "experiments", "segments", "metrics", "layers", "holdouts", "tags", "auditLogs", "users"],
+          "properties": {
+            "gates": { "$ref": "#/$defs/maybeCounts" },
+            "dynamicConfigs": { "$ref": "#/$defs/maybeCounts" },
+            "experiments": {
+              "oneOf": [
+                { "type": "null" },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["total", "byStatus"],
+                  "properties": {
+                    "total": { "type": "integer", "minimum": 0 },
+                    "byStatus": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } }
+                  }
+                }
+              ]
+            },
+            "segments": { "$ref": "#/$defs/maybeCounts" },
+            "metrics": { "$ref": "#/$defs/maybeCounts" },
+            "layers": { "$ref": "#/$defs/maybeCounts" },
+            "holdouts": { "$ref": "#/$defs/maybeCounts" },
+            "tags": { "$ref": "#/$defs/maybeCounts" },
+            "auditLogs": { "$ref": "#/$defs/maybeCounts" },
+            "users": { "$ref": "#/$defs/maybeCounts" }
+          }
+        }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "severity", "status", "reason", "findings", "suppressed"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[A-Z][0-9]{2}$" },
+          "title": { "type": "string" },
+          "severity": { "$ref": "#/$defs/severity" },
+          "status": { "enum": ["ran", "skipped", "disabled", "error"] },
+          "reason": { "type": ["string", "null"] },
+          "findings": { "type": "integer", "minimum": 0 },
+          "suppressed": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["check", "title", "severity", "entity", "message", "action", "related"],
+        "properties": {
+          "check": { "type": "string", "pattern": "^[A-Z][0-9]{2}$" },
+          "title": { "type": "string" },
+          "severity": { "$ref": "#/$defs/severity" },
+          "entity": { "$ref": "#/$defs/entity" },
+          "message": { "type": "string" },
+          "action": { "type": "string" },
+          "related": { "type": "array", "items": { "$ref": "#/$defs/entity" } }
+        }
+      }
+    },
+    "suppressed": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["check", "entity", "reason"],
+        "properties": {
+          "check": { "type": "string" },
+          "entity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "id"],
+            "properties": {
+              "type": { "$ref": "#/$defs/entityType" },
+              "id": { "type": "string" }
+            }
+          },
+          "reason": { "type": ["string", "null"] }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "severity": { "enum": ["high", "medium", "low"] },
+    "entityType": { "enum": ["gate", "dynamicConfig", "experiment", "segment", "metric", "layer", "holdout", "project", "tag"] },
+    "entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "id", "name", "permalink", "owner", "ownerEmail"],
+      "properties": {
+        "type": { "$ref": "#/$defs/entityType" },
+        "id": { "type": "string" },
+        "name": { "type": ["string", "null"], "description": "Set only when the display name differs from the id." },
+        "permalink": { "type": ["string", "null"] },
+        "owner": { "type": ["string", "null"], "description": "Owner display name. Never an email." },
+        "ownerEmail": { "type": ["string", "null"], "description": "Null unless the report was made with --show-emails." }
+      }
+    },
+    "maybeCounts": {
+      "description": "Counts for one entity type, or null when that list was not collected.",
+      "oneOf": [
+        { "type": "null" },
+        { "type": "object", "required": ["total"], "additionalProperties": { "type": "integer", "minimum": 0 } }
+      ]
+    }
+  }
+}

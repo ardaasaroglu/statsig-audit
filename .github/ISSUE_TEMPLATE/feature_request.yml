@@ -1,0 +1,19 @@
+name: Idea for a check or a feature
+description: Suggest a change before writing code.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: A new check needs to work from data the Console API returns, stay read-only, and avoid repeating what Statsig already flags. Describe the problem first, so it can be discussed before anyone writes code.
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What goes wrong in a Statsig project when nobody notices this?
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: What you would change
+      description: For a new check, the fields it would read and the rule it would apply.

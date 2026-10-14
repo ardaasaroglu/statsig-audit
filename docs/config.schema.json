@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/ardaasaroglu/statsig-audit/main/docs/config.schema.json",
+  "title": "statsig-audit config (.statsig-audit.json)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Which checks run. enable keeps only the listed checks; disable removes checks. Both may be used.",
+      "properties": {
+        "enable": { "type": "array", "items": { "$ref": "#/$defs/checkId" } },
+        "disable": { "type": "array", "items": { "$ref": "#/$defs/checkId" } }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gateCleanupDays": { "type": "integer", "minimum": 1, "default": 60, "description": "G02: days a gate may stay launched or disabled before cleanup is due." },
+        "singleOutcomeDays": { "type": "integer", "minimum": 1, "default": 30, "description": "G03: days an in-progress gate may serve one value to everyone." },
+        "partialRolloutDays": { "type": "integer", "minimum": 1, "default": 30, "description": "G04: days a partial rollout may stay unchanged." },
+        "zeroTrafficMinAgeDays": { "type": "integer", "minimum": 1, "default": 7, "description": "G06: a gate younger than this is never reported for zero traffic." },
+        "experimentCleanupDays": { "type": "integer", "minimum": 1, "default": 30, "description": "E02: days after a decision before cleanup is due." },
+        "experimentMaxRunDays": { "type": "integer", "minimum": 1, "default": 60, "description": "E03: days an experiment with no planned duration may run." },
+        "ruleChurnWindowDays": { "type": "integer", "minimum": 1, "default": 7, "description": "A01: window for counting rule changes." },
+        "ruleChurnMinChanges": { "type": "integer", "minimum": 1, "default": 5, "description": "A01: changes within the window that count as churn." },
+        "allowlistMinSize": { "type": "integer", "minimum": 1, "default": 5, "description": "G10: shortest inline ID list compared across entities." },
+        "minHypothesisLength": { "type": "integer", "minimum": 1, "default": 50, "description": "E04: shortest hypothesis, in characters." },
+        "maxPrimaryMetrics": { "type": "integer", "minimum": 1, "default": 5, "description": "E04: most primary metrics before the experiment is flagged." }
+      }
+    },
+    "naming": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "N01 patterns, as JavaScript regular expressions. null turns a pattern off.",
+      "properties": {
+        "pattern": { "type": ["string", "null"], "default": "^[a-z0-9]+(_[a-z0-9]+)*$", "description": "Every id must match this." },
+        "junkPattern": { "type": ["string", "null"], "description": "Ids that match this look like scratch entities. Matched without case." }
+      }
+    },
+    "ignore": {
+      "type": "array",
+      "description": "Findings to suppress. A rule matches when every key it sets matches.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "anyOf": [{ "required": ["check"] }, { "required": ["id"] }],
+        "properties": {
+          "check": { "$ref": "#/$defs/checkId" },
+          "id": { "type": "string", "description": "Entity id or name." },
+          "entity": { "enum": ["gate", "dynamicConfig", "experiment", "segment", "metric", "layer", "holdout", "project", "tag"] },
+          "reason": { "type": "string", "description": "Shown in the report." }
+        }
+      }
+    },
+    "auditLogDays": { "type": "integer", "minimum": 1, "maximum": 90, "default": 30, "description": "Days of audit log to read." }
+  },
+  "$defs": {
+    "checkId": {
+      "enum": ["G01", "G02", "G03", "G04", "G06", "G08", "G09", "G10", "G11", "G12", "G13", "G14", "D01", "E02", "E03", "E04", "E05", "E06", "E09", "X01", "X02", "X03", "A01", "A02", "N01"]
+    }
+  }
+}

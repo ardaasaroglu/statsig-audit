@@ -1,0 +1,15 @@
+{
+  "name": "statsig-audit",
+  "owner": {
+    "name": "Arda Asaroglu",
+    "url": "https://github.com/ardaasaroglu"
+  },
+  "description": "Install the statsig-audit plugin: a read-only hygiene audit for a Statsig project. Unofficial.",
+  "plugins": [
+    {
+      "name": "statsig-audit",
+      "source": "./",
+      "description": "Read-only Statsig hygiene audit with a prioritized action plan"
+    }
+  ]
+}

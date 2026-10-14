@@ -1,0 +1,28 @@
+name: Bug report
+description: Something does not work the way the README says it should.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Do not paste an API key, a snapshot or a report from a real project. They hold your project's data. Use the fictional fixture or rename things. For a security problem, use the security policy instead of an issue.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: The command you ran (without the key), what you expected and what you saw.
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      description: statsig-audit version, how you ran it (npx, node, GitHub Action, Claude Code plugin), OS and Node version.
+      placeholder: 0.1.0, npx, Ubuntu 24.04, Node 22
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Error output
+      description: The stderr output. The tool never prints the key, but check before you paste.
+      render: text

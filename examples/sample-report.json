@@ -1,0 +1,1099 @@
+{
+  "schemaVersion": 1,
+  "tool": {
+    "name": "statsig-audit",
+    "version": "0.1.0"
+  },
+  "evaluatedAt": "2026-10-14T09:00:00.000Z",
+  "snapshot": {
+    "fetchedAt": "2026-10-14T09:00:00.000Z",
+    "source": "fixture",
+    "projectName": "Acme Pantry (fictional)",
+    "auditLogDays": 30,
+    "deep": true,
+    "requests": null
+  },
+  "summary": {
+    "findings": 46,
+    "bySeverity": {
+      "high": 13,
+      "medium": 24,
+      "low": 9
+    },
+    "suppressed": 1,
+    "score": {
+      "value": 42,
+      "cleanEntities": 19,
+      "auditedEntities": 45
+    },
+    "inventory": {
+      "gates": {
+        "total": 20,
+        "archived": 1,
+        "stale": 3,
+        "permanent": 2
+      },
+      "dynamicConfigs": {
+        "total": 3,
+        "archived": 0,
+        "stale": 1
+      },
+      "experiments": {
+        "total": 9,
+        "byStatus": {
+          "abandoned": 1,
+          "active": 5,
+          "archived": 1,
+          "decision_made": 1,
+          "setup": 1
+        }
+      },
+      "segments": {
+        "total": 4
+      },
+      "metrics": {
+        "total": 9,
+        "builtIn": 2,
+        "verified": 6,
+        "hidden": 1
+      },
+      "layers": {
+        "total": 4,
+        "implicit": 1
+      },
+      "holdouts": {
+        "total": 1,
+        "enabled": 1
+      },
+      "tags": {
+        "total": 7
+      },
+      "auditLogs": {
+        "total": 15
+      },
+      "users": {
+        "total": 5
+      }
+    }
+  },
+  "checks": [
+    {
+      "id": "G01",
+      "title": "Gates Statsig marked stale",
+      "severity": "medium",
+      "status": "ran",
+      "reason": null,
+      "findings": 3,
+      "suppressed": 0
+    },
+    {
+      "id": "G02",
+      "title": "Launched or disabled gates past their cleanup window",
+      "severity": "medium",
+      "status": "ran",
+      "reason": null,
+      "findings": 2,
+      "suppressed": 0
+    },
+    {
+      "id": "G03",
+      "title": "In-progress gates that serve everyone the same value",
+      "severity": "medium",
+      "status": "ran",
+      "reason": null,
+      "findings": 1,
+      "suppressed": 0
+    },
+    {
+      "id": "G04",
+      "title": "Partial rollouts left alone",
+      "severity": "medium",
+      "status": "ran",
+      "reason": null,
+      "findings": 1,
+      "suppressed": 0
+    },
+    {
+      "id": "G06",
+      "title": "Gates with no traffic",
+      "severity": "medium",
+      "status": "ran",
+      "reason": null,
+      "findings": 1,
+      "suppressed": 0
+    },
+    {
+      "id": "G08",
+      "title": "Conditions with no values",
+      "severity": "high",
+      "status": "ran",
+      "reason": null,
+      "findings": 1,
+      "suppressed": 0
+    },
+    {
+      "id": "G09",
+      "title": "Targeting values that will not match",
+      "severity": "high",
+      "status": "ran",
+      "reason": null,
+      "findings": 1,
+      "suppressed": 0
+    },
+    {
+      "id": "G10",
+      "title": "The same ID list pasted into several entities",
+      "severity": "medium",
+      "status": "ran",
+      "reason": null,
+      "findings": 1,
+      "suppressed": 0
+    },
+    {
+      "id": "G11",
+      "title": "Rules that can never run",
+      "severity": "medium",
+      "status": "ran",
+      "reason": null,
+      "findings": 1,
+      "suppressed": 0
+    },
+    {
+      "id": "G12",
+      "title": "References to missing, archived or disabled entities",
+      "severity": "high",
+      "status": "ran",
+      "reason": null,
+      "findings": 5,
+      "suppressed": 0
+    },
+    {
+      "id": "G13",
+      "title": "Missing description, owner or tags",
+      "severity": "low",
+      "status": "ran",
+      "reason": null,
+      "findings": 2,
+      "suppressed": 0
+    },
+    {
+      "id": "G14",
+      "title": "Owners who are no longer project members",
+      "severity": "medium",
+      "status": "ran",
+      "reason": null,
+      "findings": 3,
+      "suppressed": 0
+    },
+    {
+      "id": "D01",
+      "title": "Dynamic configs Statsig marked stale",
+      "severity": "medium",
+      "status": "ran",
+      "reason": null,
+      "findings": 1,
+      "suppressed": 0
+    },
+    {
+      "id": "E02",
+      "title": "Decided or abandoned experiments not cleaned up",
+      "severity": "medium",
+      "status": "ran",
+      "reason": null,
+      "findings": 2,
+      "suppressed": 0
+    },
+    {
+      "id": "E03",
+      "title": "Experiments running past their plan",
+      "severity": "medium",
+      "status": "ran",
+      "reason": null,
+      "findings": 3,
+      "suppressed": 0
+    },
+    {
+      "id": "E04",
+      "title": "Experiments without a hypothesis or the right metrics",
+      "severity": "high",
+      "status": "ran",
+      "reason": null,
+      "findings": 3,
+      "suppressed": 0
+    },
+    {
+      "id": "E05",
+      "title": "Several comparisons with no correction",
+      "severity": "medium",
+      "status": "ran",
+      "reason": null,
+      "findings": 1,
+      "suppressed": 0
+    },
+    {
+      "id": "E06",
+      "title": "Running experiments with failing health checks",
+      "severity": "high",
+      "status": "ran",
+      "reason": null,
+      "findings": 1,
+      "suppressed": 0
+    },
+    {
+      "id": "E09",
+      "title": "Experiments whose targeting gate lets nobody in",
+      "severity": "high",
+      "status": "ran",
+      "reason": null,
+      "findings": 2,
+      "suppressed": 0
+    },
+    {
+      "id": "X01",
+      "title": "Layers no experiment uses",
+      "severity": "low",
+      "status": "ran",
+      "reason": null,
+      "findings": 1,
+      "suppressed": 1
+    },
+    {
+      "id": "X02",
+      "title": "Segments nothing uses, and empty ID lists",
+      "severity": "low",
+      "status": "ran",
+      "reason": null,
+      "findings": 2,
+      "suppressed": 0
+    },
+    {
+      "id": "X03",
+      "title": "Running experiments decided by metrics nobody vouched for",
+      "severity": "medium",
+      "status": "ran",
+      "reason": null,
+      "findings": 2,
+      "suppressed": 0
+    },
+    {
+      "id": "A01",
+      "title": "Gates and configs whose rules keep changing",
+      "severity": "medium",
+      "status": "ran",
+      "reason": null,
+      "findings": 1,
+      "suppressed": 0
+    },
+    {
+      "id": "A02",
+      "title": "No required review for changes",
+      "severity": "medium",
+      "status": "ran",
+      "reason": null,
+      "findings": 1,
+      "suppressed": 0
+    },
+    {
+      "id": "N01",
+      "title": "Names off convention, scratch entities and tag drift",
+      "severity": "low",
+      "status": "ran",
+      "reason": null,
+      "findings": 4,
+      "suppressed": 0
+    }
+  ],
+  "findings": [
+    {
+      "check": "G08",
+      "title": "Conditions with no values",
+      "severity": "high",
+      "entity": {
+        "type": "gate",
+        "id": "gift_cards",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/gift_cards",
+        "owner": "Riley Santos",
+        "ownerEmail": null
+      },
+      "message": "In rule \"Pilot stores\", the custom field store_id condition (any) has no values, so it matches no user.",
+      "action": "Add the values the rule was meant to target, or delete the condition.",
+      "related": []
+    },
+    {
+      "check": "G09",
+      "title": "Targeting values that will not match",
+      "severity": "high",
+      "entity": {
+        "type": "gate",
+        "id": "new_checkout_flow",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/new_checkout_flow",
+        "owner": "Avery Chen",
+        "ownerEmail": null
+      },
+      "message": "In rule \"Staff\", the email condition (any) has leading or trailing spaces in \"n…@acme-pantry.example \"; a domain one letter away from acme-pantry.example in \"t…@acme-pantry.exmple\".",
+      "action": "Fix the listed values in the rule. For long lists, move them into an ID list segment.",
+      "related": []
+    },
+    {
+      "check": "G12",
+      "title": "References to missing, archived or disabled entities",
+      "severity": "high",
+      "entity": {
+        "type": "experiment",
+        "id": "cart_reminder_timing",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/experiments/cart_reminder_timing",
+        "owner": "Jordan Blake",
+        "ownerEmail": null
+      },
+      "message": "It is assigned to layer growth_layer_v0, which does not exist.",
+      "action": "Point the rule at the right gate or segment, or remove the condition. Restore the target if it was archived by mistake.",
+      "related": []
+    },
+    {
+      "check": "G12",
+      "title": "References to missing, archived or disabled entities",
+      "severity": "high",
+      "entity": {
+        "type": "gate",
+        "id": "loyalty_points",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/loyalty_points",
+        "owner": "Morgan Ellis",
+        "ownerEmail": null
+      },
+      "message": "In rule \"Loyalty members\", passes_segment points at segment loyalty_members_v1, which does not exist.",
+      "action": "Point the rule at the right gate or segment, or remove the condition. Restore the target if it was archived by mistake.",
+      "related": []
+    },
+    {
+      "check": "G12",
+      "title": "References to missing, archived or disabled entities",
+      "severity": "high",
+      "entity": {
+        "type": "gate",
+        "id": "wine_delivery",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/wine_delivery",
+        "owner": "Avery Chen",
+        "ownerEmail": null
+      },
+      "message": "In rule \"Legacy beta\", passes_segment points at segment legacy_beta_users, which is disabled, so it matches nobody.",
+      "action": "Point the rule at the right gate or segment, or remove the condition. Restore the target if it was archived by mistake.",
+      "related": []
+    },
+    {
+      "check": "G12",
+      "title": "References to missing, archived or disabled entities",
+      "severity": "high",
+      "entity": {
+        "type": "gate",
+        "id": "wine_delivery",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/wine_delivery",
+        "owner": "Avery Chen",
+        "ownerEmail": null
+      },
+      "message": "In rule \"Verified adults\", passes_gate points at gate age_verification_beta, which is archived, so it returns false.",
+      "action": "Point the rule at the right gate or segment, or remove the condition. Restore the target if it was archived by mistake.",
+      "related": []
+    },
+    {
+      "check": "G12",
+      "title": "References to missing, archived or disabled entities",
+      "severity": "high",
+      "entity": {
+        "type": "holdout",
+        "id": "q4_global_holdout",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/holdouts/q4_global_holdout",
+        "owner": "Avery Chen",
+        "ownerEmail": null
+      },
+      "message": "It holds out gate age_verification_beta, which is archived.",
+      "action": "Point the rule at the right gate or segment, or remove the condition. Restore the target if it was archived by mistake.",
+      "related": []
+    },
+    {
+      "check": "E04",
+      "title": "Experiments without a hypothesis or the right metrics",
+      "severity": "high",
+      "entity": {
+        "type": "experiment",
+        "id": "checkout_button_copy",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/experiments/checkout_button_copy",
+        "owner": "Avery Chen",
+        "ownerEmail": null
+      },
+      "message": "Running with no secondary or guardrail metrics.",
+      "action": "Write the hypothesis (what changes, for whom, which metric moves and by how much), pick the primary metrics, and add guardrail metrics.",
+      "related": []
+    },
+    {
+      "check": "E04",
+      "title": "Experiments without a hypothesis or the right metrics",
+      "severity": "high",
+      "entity": {
+        "type": "experiment",
+        "id": "substitution_suggestions",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/experiments/substitution_suggestions",
+        "owner": "Morgan Ellis",
+        "ownerEmail": null
+      },
+      "message": "Running with a 19-character hypothesis.",
+      "action": "Write the hypothesis (what changes, for whom, which metric moves and by how much), pick the primary metrics, and add guardrail metrics.",
+      "related": []
+    },
+    {
+      "check": "E06",
+      "title": "Running experiments with failing health checks",
+      "severity": "high",
+      "entity": {
+        "type": "experiment",
+        "id": "delivery_eta_display",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/experiments/delivery_eta_display",
+        "owner": "Jordan Blake",
+        "ownerEmail": null
+      },
+      "message": "Health checks failed: Exposures are balanced (failed).",
+      "action": "Open the experiment's diagnostics, fix the cause, and restart the experiment if the assignment itself was broken.",
+      "related": []
+    },
+    {
+      "check": "E09",
+      "title": "Experiments whose targeting gate lets nobody in",
+      "severity": "high",
+      "entity": {
+        "type": "experiment",
+        "id": "substitution_suggestions",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/experiments/substitution_suggestions",
+        "owner": "Morgan Ellis",
+        "ownerEmail": null
+      },
+      "message": "Its targeting gate old_search_ranking returned false on every check for 30 days.",
+      "action": "Point the experiment at a working targeting gate, or fix the gate's rules.",
+      "related": [
+        {
+          "type": "gate",
+          "id": "old_search_ranking",
+          "name": null,
+          "permalink": "https://console.statsig.com/acme-pantry-example/gates/old_search_ranking",
+          "owner": "Casey Novak",
+          "ownerEmail": null
+        }
+      ]
+    },
+    {
+      "check": "E09",
+      "title": "Experiments whose targeting gate lets nobody in",
+      "severity": "high",
+      "entity": {
+        "type": "experiment",
+        "id": "survey_incentive_test",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/experiments/survey_incentive_test",
+        "owner": "Riley Santos",
+        "ownerEmail": null
+      },
+      "message": "Its targeting gate churn_survey is disabled, so it returns false.",
+      "action": "Point the experiment at a working targeting gate, or fix the gate's rules.",
+      "related": [
+        {
+          "type": "gate",
+          "id": "churn_survey",
+          "name": null,
+          "permalink": "https://console.statsig.com/acme-pantry-example/gates/churn_survey",
+          "owner": "Morgan Ellis",
+          "ownerEmail": null
+        }
+      ]
+    },
+    {
+      "check": "A01",
+      "title": "Gates and configs whose rules keep changing",
+      "severity": "high",
+      "entity": {
+        "type": "gate",
+        "id": "delivery_fee_override",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/delivery_fee_override",
+        "owner": "Jordan Blake",
+        "ownerEmail": null
+      },
+      "message": "8 rule or state changes in the last 7 days, by 3 people. Its own review setting is off and the project does not require reviews.",
+      "action": "Find out why it keeps changing. Turn on required reviews for it, and move values that are tuned often into a dynamic config.",
+      "related": []
+    },
+    {
+      "check": "G01",
+      "title": "Gates Statsig marked stale",
+      "severity": "medium",
+      "entity": {
+        "type": "gate",
+        "id": "holiday_banner_2025",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/holiday_banner_2025",
+        "owner": "Morgan Ellis",
+        "ownerEmail": null
+      },
+      "message": "Marked stale: no checks in the last 30 days. Last changed 120 days ago.",
+      "action": "Confirm no code still checks it, then archive it.",
+      "related": []
+    },
+    {
+      "check": "G01",
+      "title": "Gates Statsig marked stale",
+      "severity": "medium",
+      "entity": {
+        "type": "gate",
+        "id": "old_search_ranking",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/old_search_ranking",
+        "owner": "Casey Novak",
+        "ownerEmail": null
+      },
+      "message": "Marked stale: returned false on every check for 30 days. Last changed 63 days ago.",
+      "action": "Remove the check from code and keep the false path, then archive the gate.",
+      "related": []
+    },
+    {
+      "check": "G01",
+      "title": "Gates Statsig marked stale",
+      "severity": "medium",
+      "entity": {
+        "type": "gate",
+        "id": "saved_carts",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/saved_carts",
+        "owner": "Avery Chen",
+        "ownerEmail": null
+      },
+      "message": "Marked stale: launched, or an everyone rule passes 100%. Last changed 75 days ago. Statsig marked it stale on 2026-10-02.",
+      "action": "Remove the check from code and keep the launched path, then archive the gate.",
+      "related": []
+    },
+    {
+      "check": "G02",
+      "title": "Launched or disabled gates past their cleanup window",
+      "severity": "medium",
+      "entity": {
+        "type": "gate",
+        "id": "churn_survey",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/churn_survey",
+        "owner": "Morgan Ellis",
+        "ownerEmail": null
+      },
+      "message": "Disabled and unchanged for 70 days, so every check returns false.",
+      "action": "Remove the check from code and keep the default path, then archive the gate.",
+      "related": []
+    },
+    {
+      "check": "G02",
+      "title": "Launched or disabled gates past their cleanup window",
+      "severity": "medium",
+      "entity": {
+        "type": "gate",
+        "id": "express_delivery_enabled",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/express_delivery_enabled",
+        "owner": "Jordan Blake",
+        "ownerEmail": null
+      },
+      "message": "Launched and unchanged for 94 days, so every check returns true.",
+      "action": "Remove the check from code and keep the launched path, then archive the gate.",
+      "related": []
+    },
+    {
+      "check": "G03",
+      "title": "In-progress gates that serve everyone the same value",
+      "severity": "medium",
+      "entity": {
+        "type": "gate",
+        "id": "substitutions_v2",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/substitutions_v2",
+        "owner": "Riley Santos",
+        "ownerEmail": null
+      },
+      "message": "In Progress, but it serves true to everyone (rule \"Everyone\" passes 100%). Unchanged for 52 days.",
+      "action": "Launch the gate (or mark it permanent if it is a kill switch), then remove the check from code.",
+      "related": []
+    },
+    {
+      "check": "G04",
+      "title": "Partial rollouts left alone",
+      "severity": "medium",
+      "entity": {
+        "type": "gate",
+        "id": "new_checkout_flow",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/new_checkout_flow",
+        "owner": "Avery Chen",
+        "ownerEmail": null
+      },
+      "message": "Still partial: rule \"Beta 25%\" at 25%. Unchanged for 41 days with no scheduled rollout step.",
+      "action": "Finish the rollout to 100% or roll it back to 0%, then launch or disable the gate. If the split is on purpose, mark the gate permanent or add it to the ignore list.",
+      "related": []
+    },
+    {
+      "check": "G06",
+      "title": "Gates with no traffic",
+      "severity": "medium",
+      "entity": {
+        "type": "gate",
+        "id": "driver_tips_v2",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/driver_tips_v2",
+        "owner": "Jordan Blake",
+        "ownerEmail": null
+      },
+      "message": "No production checks in the last 7 days, confirmed by Statsig. Created 40 days ago.",
+      "action": "Search the code for the gate name. If nothing checks it, archive it. If something should, fix the name in code.",
+      "related": []
+    },
+    {
+      "check": "G10",
+      "title": "The same ID list pasted into several entities",
+      "severity": "medium",
+      "entity": {
+        "type": "dynamicConfig",
+        "id": "beta_feedback_widget",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/dynamic_configs/beta_feedback_widget",
+        "owner": "Riley Santos",
+        "ownerEmail": null
+      },
+      "message": "The same 6 email values also appear in gate test_gate_copy.",
+      "action": "Create an ID list segment with these values and replace each inline list with a passes_segment condition.",
+      "related": [
+        {
+          "type": "gate",
+          "id": "test_gate_copy",
+          "name": null,
+          "permalink": "https://console.statsig.com/acme-pantry-example/gates/test_gate_copy",
+          "owner": "CONSOLE API (API key)",
+          "ownerEmail": null
+        }
+      ]
+    },
+    {
+      "check": "G11",
+      "title": "Rules that can never run",
+      "severity": "medium",
+      "entity": {
+        "type": "gate",
+        "id": "smart_reorder",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/smart_reorder",
+        "owner": "Jordan Blake",
+        "ownerEmail": null
+      },
+      "message": "Rule \"Everyone\" matches everyone, so the rule after it never runs: rule \"Staff\".",
+      "action": "Move the everyone rule to the bottom, or delete the rules below it.",
+      "related": []
+    },
+    {
+      "check": "G14",
+      "title": "Owners who are no longer project members",
+      "severity": "medium",
+      "entity": {
+        "type": "experiment",
+        "id": "free_delivery_threshold",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/experiments/free_delivery_threshold",
+        "owner": "Casey Novak",
+        "ownerEmail": null
+      },
+      "message": "Casey Novak is not in the project member list.",
+      "action": "Assign a current team member as owner.",
+      "related": []
+    },
+    {
+      "check": "G14",
+      "title": "Owners who are no longer project members",
+      "severity": "medium",
+      "entity": {
+        "type": "gate",
+        "id": "old_search_ranking",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/old_search_ranking",
+        "owner": "Casey Novak",
+        "ownerEmail": null
+      },
+      "message": "Casey Novak is not in the project member list.",
+      "action": "Assign a current team member as owner.",
+      "related": []
+    },
+    {
+      "check": "G14",
+      "title": "Owners who are no longer project members",
+      "severity": "medium",
+      "entity": {
+        "type": "segment",
+        "id": "legacy_beta_users",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/segments/legacy_beta_users",
+        "owner": "Casey Novak",
+        "ownerEmail": null
+      },
+      "message": "Casey Novak is not in the project member list.",
+      "action": "Assign a current team member as owner.",
+      "related": []
+    },
+    {
+      "check": "D01",
+      "title": "Dynamic configs Statsig marked stale",
+      "severity": "medium",
+      "entity": {
+        "type": "dynamicConfig",
+        "id": "checkout_copy",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/dynamic_configs/checkout_copy",
+        "owner": "Avery Chen",
+        "ownerEmail": null
+      },
+      "message": "Marked stale: probably launched. Last changed 88 days ago. Statsig marked it stale on 2026-09-19.",
+      "action": "Make the value everyone gets the default, remove the rules, and archive the config once code no longer reads it.",
+      "related": []
+    },
+    {
+      "check": "E02",
+      "title": "Decided or abandoned experiments not cleaned up",
+      "severity": "medium",
+      "entity": {
+        "type": "experiment",
+        "id": "free_delivery_threshold",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/experiments/free_delivery_threshold",
+        "owner": "Casey Novak",
+        "ownerEmail": null
+      },
+      "message": "Abandoned 45 days ago and not archived.",
+      "action": "Remove the test branches from code, then archive the experiment.",
+      "related": []
+    },
+    {
+      "check": "E02",
+      "title": "Decided or abandoned experiments not cleaned up",
+      "severity": "medium",
+      "entity": {
+        "type": "experiment",
+        "id": "homepage_hero_test",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/experiments/homepage_hero_test",
+        "owner": "Avery Chen",
+        "ownerEmail": null
+      },
+      "message": "Decision made 58 days ago (shipped \"Seasonal hero\") and not archived.",
+      "action": "Remove the losing branches from code, keeping the shipped one, then archive the experiment.",
+      "related": []
+    },
+    {
+      "check": "E03",
+      "title": "Experiments running past their plan",
+      "severity": "medium",
+      "entity": {
+        "type": "experiment",
+        "id": "cart_reminder_timing",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/experiments/cart_reminder_timing",
+        "owner": "Jordan Blake",
+        "ownerEmail": null
+      },
+      "message": "No planned duration and running for 75 days.",
+      "action": "Read the results and make a decision, or write down why it needs more time and set a new duration.",
+      "related": []
+    },
+    {
+      "check": "E03",
+      "title": "Experiments running past their plan",
+      "severity": "medium",
+      "entity": {
+        "type": "experiment",
+        "id": "checkout_button_copy",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/experiments/checkout_button_copy",
+        "owner": "Avery Chen",
+        "ownerEmail": null
+      },
+      "message": "Planned for 14 days and running for 40, 26 days over.",
+      "action": "Read the results and make a decision, or write down why it needs more time and set a new duration.",
+      "related": []
+    },
+    {
+      "check": "E03",
+      "title": "Experiments running past their plan",
+      "severity": "medium",
+      "entity": {
+        "type": "experiment",
+        "id": "delivery_eta_display",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/experiments/delivery_eta_display",
+        "owner": "Jordan Blake",
+        "ownerEmail": null
+      },
+      "message": "Reached its target of 20,000 exposures (24,310 so far).",
+      "action": "Read the results and make a decision, or write down why it needs more time and set a new duration.",
+      "related": []
+    },
+    {
+      "check": "E04",
+      "title": "Experiments without a hypothesis or the right metrics",
+      "severity": "medium",
+      "entity": {
+        "type": "experiment",
+        "id": "survey_incentive_test",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/experiments/survey_incentive_test",
+        "owner": "Riley Santos",
+        "ownerEmail": null
+      },
+      "message": "In setup with no hypothesis, no primary metric and no secondary or guardrail metrics.",
+      "action": "Write the hypothesis (what changes, for whom, which metric moves and by how much), pick the primary metrics, and add guardrail metrics.",
+      "related": []
+    },
+    {
+      "check": "E05",
+      "title": "Several comparisons with no correction",
+      "severity": "medium",
+      "entity": {
+        "type": "experiment",
+        "id": "delivery_eta_display",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/experiments/delivery_eta_display",
+        "owner": "Jordan Blake",
+        "ownerEmail": null
+      },
+      "message": "3 primary metrics and 3 groups, with no Bonferroni or Benjamini-Hochberg correction.",
+      "action": "Turn on Bonferroni or Benjamini-Hochberg correction in the experiment's advanced settings, or cut it to one primary metric and one test group.",
+      "related": []
+    },
+    {
+      "check": "X03",
+      "title": "Running experiments decided by metrics nobody vouched for",
+      "severity": "medium",
+      "entity": {
+        "type": "metric",
+        "id": "basket_size::mean",
+        "name": "basket_size",
+        "permalink": "https://console.statsig.com/acme-pantry-example/metrics/metrics_catalog/basket_size/mean",
+        "owner": "Jordan Blake",
+        "ownerEmail": null
+      },
+      "message": "Hidden from the catalog, and it is a primary metric of running experiment delivery_eta_display.",
+      "action": "Have the metric owner review and verify the definition, or switch the experiment to a verified metric before reading results.",
+      "related": [
+        {
+          "type": "experiment",
+          "id": "delivery_eta_display",
+          "name": null,
+          "permalink": "https://console.statsig.com/acme-pantry-example/experiments/delivery_eta_display",
+          "owner": "Jordan Blake",
+          "ownerEmail": null
+        }
+      ]
+    },
+    {
+      "check": "X03",
+      "title": "Running experiments decided by metrics nobody vouched for",
+      "severity": "medium",
+      "entity": {
+        "type": "metric",
+        "id": "checkout_conversion::ratio",
+        "name": "checkout_conversion",
+        "permalink": "https://console.statsig.com/acme-pantry-example/metrics/metrics_catalog/checkout_conversion/ratio",
+        "owner": "Avery Chen",
+        "ownerEmail": null
+      },
+      "message": "Not verified, and it is a primary metric of running experiment checkout_button_copy.",
+      "action": "Have the metric owner review and verify the definition, or switch the experiment to a verified metric before reading results.",
+      "related": [
+        {
+          "type": "experiment",
+          "id": "checkout_button_copy",
+          "name": null,
+          "permalink": "https://console.statsig.com/acme-pantry-example/experiments/checkout_button_copy",
+          "owner": "Avery Chen",
+          "ownerEmail": null
+        }
+      ]
+    },
+    {
+      "check": "A02",
+      "title": "No required review for changes",
+      "severity": "medium",
+      "entity": {
+        "type": "project",
+        "id": "project",
+        "name": null,
+        "permalink": null,
+        "owner": null,
+        "ownerEmail": null
+      },
+      "message": "Project settings do not require a review for config changes. A team-level setting may still require one for some teams.",
+      "action": "Turn on required reviews for config changes in the project settings. Metric reviews matter once metrics decide launches.",
+      "related": []
+    },
+    {
+      "check": "G13",
+      "title": "Missing description, owner or tags",
+      "severity": "low",
+      "entity": {
+        "type": "gate",
+        "id": "test_gate_copy",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/test_gate_copy",
+        "owner": "CONSOLE API (API key)",
+        "ownerEmail": null
+      },
+      "message": "Has no description, an API key as owner instead of a person and no tags.",
+      "action": "Add a one-line description of what the entity controls, assign an owner, and tag it with the team or area.",
+      "related": []
+    },
+    {
+      "check": "G13",
+      "title": "Missing description, owner or tags",
+      "severity": "low",
+      "entity": {
+        "type": "metric",
+        "id": "support_tickets::event_count_custom",
+        "name": "support_tickets",
+        "permalink": "https://console.statsig.com/acme-pantry-example/metrics/metrics_catalog/support_tickets/event_count_custom",
+        "owner": "Morgan Ellis",
+        "ownerEmail": null
+      },
+      "message": "Has no description.",
+      "action": "Add a one-line description of what the entity controls, assign an owner, and tag it with the team or area.",
+      "related": []
+    },
+    {
+      "check": "X01",
+      "title": "Layers no experiment uses",
+      "severity": "low",
+      "entity": {
+        "type": "layer",
+        "id": "search_layer",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/layers/search_layer",
+        "owner": "Casey Novak",
+        "ownerEmail": null
+      },
+      "message": "No experiment uses this layer, apart from archived ones. Last changed 95 days ago.",
+      "action": "Archive or delete the layer if code no longer reads its parameters. Keep it if a new experiment is about to use it.",
+      "related": []
+    },
+    {
+      "check": "X02",
+      "title": "Segments nothing uses, and empty ID lists",
+      "severity": "low",
+      "entity": {
+        "type": "segment",
+        "id": "loyalty_members",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/segments/loyalty_members",
+        "owner": "Morgan Ellis",
+        "ownerEmail": null
+      },
+      "message": "No gate, dynamic config, experiment or segment rule references it.",
+      "action": "Delete the segment if nothing outside Statsig's rules needs it. Fill the ID list or remove it.",
+      "related": []
+    },
+    {
+      "check": "X02",
+      "title": "Segments nothing uses, and empty ID lists",
+      "severity": "low",
+      "entity": {
+        "type": "segment",
+        "id": "qa_devices",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/segments/qa_devices",
+        "owner": "Riley Santos",
+        "ownerEmail": null
+      },
+      "message": "Its ID list is empty. No gate, dynamic config, experiment or segment rule references it.",
+      "action": "Delete the segment if nothing outside Statsig's rules needs it. Fill the ID list or remove it.",
+      "related": []
+    },
+    {
+      "check": "N01",
+      "title": "Names off convention, scratch entities and tag drift",
+      "severity": "low",
+      "entity": {
+        "type": "gate",
+        "id": "Pantry-Scanner",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/Pantry-Scanner",
+        "owner": "Riley Santos",
+        "ownerEmail": null
+      },
+      "message": "Its id does not match the naming pattern.",
+      "action": "Rename or archive scratch entities, and agree on one naming pattern. Add missing tags to the tag list or retag the entities.",
+      "related": []
+    },
+    {
+      "check": "N01",
+      "title": "Names off convention, scratch entities and tag drift",
+      "severity": "low",
+      "entity": {
+        "type": "gate",
+        "id": "test_gate_copy",
+        "name": null,
+        "permalink": "https://console.statsig.com/acme-pantry-example/gates/test_gate_copy",
+        "owner": "CONSOLE API (API key)",
+        "ownerEmail": null
+      },
+      "message": "Its id looks like a scratch or copied entity.",
+      "action": "Rename or archive scratch entities, and agree on one naming pattern. Add missing tags to the tag list or retag the entities.",
+      "related": []
+    },
+    {
+      "check": "N01",
+      "title": "Names off convention, scratch entities and tag drift",
+      "severity": "low",
+      "entity": {
+        "type": "tag",
+        "id": "tags",
+        "name": null,
+        "permalink": null,
+        "owner": null,
+        "ownerEmail": null
+      },
+      "message": "Tags in the tag list that no entity uses: partnerships.",
+      "action": "Rename or archive scratch entities, and agree on one naming pattern. Add missing tags to the tag list or retag the entities.",
+      "related": []
+    },
+    {
+      "check": "N01",
+      "title": "Names off convention, scratch entities and tag drift",
+      "severity": "low",
+      "entity": {
+        "type": "tag",
+        "id": "tags",
+        "name": null,
+        "permalink": null,
+        "owner": null,
+        "ownerEmail": null
+      },
+      "message": "Tags used on entities but not in the tag list: pricing.",
+      "action": "Rename or archive scratch entities, and agree on one naming pattern. Add missing tags to the tag list or retag the entities.",
+      "related": []
+    }
+  ],
+  "suppressed": [
+    {
+      "check": "X01",
+      "entity": {
+        "type": "layer",
+        "id": "pricing_layer"
+      },
+      "reason": "Reserved for next quarter's pricing tests."
+    }
+  ]
+}

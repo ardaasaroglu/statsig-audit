@@ -1,0 +1,38 @@
+# A weekly Statsig hygiene audit. Copy this file to .github/workflows/statsig-audit.yml.
+#
+# It needs a repository secret named STATSIG_CONSOLE_API_KEY that holds a read-only
+# Console API key. The report names your gates, experiments, segments and owners, and
+# anyone who can read the repository can read the job summary and the artifact, so run
+# it in a private repository.
+name: statsig-audit
+
+on:
+  schedule:
+    - cron: "0 7 * * 1" # Mondays at 07:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      # Needed only when the repository holds a .statsig-audit.json config.
+      - uses: actions/checkout@v7
+
+      - name: Audit the Statsig project
+        uses: ardaasaroglu/statsig-audit@v0
+        with:
+          fail-on: high
+        env:
+          STATSIG_CONSOLE_API_KEY: ${{ secrets.STATSIG_CONSOLE_API_KEY }}
+
+      - name: Keep the report for 30 days
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: statsig-audit-report
+          path: statsig-audit-report.md
+          if-no-files-found: ignore
+          retention-days: 30

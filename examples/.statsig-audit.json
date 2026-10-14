@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ardaasaroglu/statsig-audit/main/docs/config.schema.json",
+  "thresholds": {
+    "gateCleanupDays": 60,
+    "partialRolloutDays": 30,
+    "experimentMaxRunDays": 60
+  },
+  "naming": {
+    "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$"
+  },
+  "ignore": [
+    {
+      "check": "X01",
+      "id": "pricing_layer",
+      "reason": "Reserved for next quarter's pricing tests."
+    }
+  ]
+}

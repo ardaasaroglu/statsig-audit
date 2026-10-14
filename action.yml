@@ -1,0 +1,100 @@
+name: statsig-audit
+description: Unofficial, read-only hygiene audit of a Statsig project. Writes a Markdown or JSON report and the job summary.
+author: Arda Asaroglu
+branding:
+  icon: check-square
+  color: gray-dark
+
+# The Console API key is read from the STATSIG_CONSOLE_API_KEY environment variable.
+# Set it on the step that uses this action:
+#   env:
+#     STATSIG_CONSOLE_API_KEY: ${{ secrets.STATSIG_CONSOLE_API_KEY }}
+
+inputs:
+  fail-on:
+    description: Fail the step when a finding is at or above this severity. One of high, medium, low or none.
+    required: false
+    default: none
+  format:
+    description: Report format, markdown or json.
+    required: false
+    default: markdown
+  output:
+    description: Path of the report file. Defaults to statsig-audit-report.md, or statsig-audit-report.json for the json format.
+    required: false
+    default: ""
+  config:
+    description: Path to a config file. Without it, .statsig-audit.json in the working directory is used when it exists.
+    required: false
+    default: ""
+  checks:
+    description: Comma-separated check ids to run, for example G01,E03. Empty runs every check the config enables.
+    required: false
+    default: ""
+  deep:
+    description: Set to true to make detail calls that confirm G06 and E03 candidates.
+    required: false
+    default: "false"
+  users:
+    description: Set to true to read the project member list, which G14 needs.
+    required: false
+    default: "false"
+  input:
+    description: Audit a saved snapshot file instead of calling the API. No key is needed.
+    required: false
+    default: ""
+  job-summary:
+    description: Set to false to skip writing the Markdown report to the job summary.
+    required: false
+    default: "true"
+
+outputs:
+  report:
+    description: Path of the report file.
+    value: ${{ steps.audit.outputs.report }}
+  findings:
+    description: Number of findings, after the ignore list.
+    value: ${{ steps.audit.outputs.findings }}
+  high:
+    description: Number of high-severity findings.
+    value: ${{ steps.audit.outputs.high }}
+  medium:
+    description: Number of medium-severity findings.
+    value: ${{ steps.audit.outputs.medium }}
+  low:
+    description: Number of low-severity findings.
+    value: ${{ steps.audit.outputs.low }}
+  score:
+    description: Hygiene score from 0 to 100, or empty when nothing was audited.
+    value: ${{ steps.audit.outputs.score }}
+
+runs:
+  using: composite
+  steps:
+    - id: audit
+      shell: bash
+      # Inputs reach the script through environment variables, never by text substitution,
+      # so a value cannot inject shell code.
+      env:
+        INPUT_FAIL_ON: ${{ inputs.fail-on }}
+        INPUT_FORMAT: ${{ inputs.format }}
+        INPUT_OUTPUT: ${{ inputs.output }}
+        INPUT_CONFIG: ${{ inputs.config }}
+        INPUT_CHECKS: ${{ inputs.checks }}
+        INPUT_DEEP: ${{ inputs.deep }}
+        INPUT_USERS: ${{ inputs.users }}
+        INPUT_SNAPSHOT: ${{ inputs.input }}
+        INPUT_JOB_SUMMARY: ${{ inputs.job-summary }}
+      run: |
+        out="$INPUT_OUTPUT"
+        if [ -z "$out" ]; then
+          if [ "$INPUT_FORMAT" = "json" ]; then out="statsig-audit-report.json"; else out="statsig-audit-report.md"; fi
+        fi
+        args=(--format "$INPUT_FORMAT" --fail-on "$INPUT_FAIL_ON" --out "$out" --github-output "$GITHUB_OUTPUT")
+        if [ -n "$INPUT_CONFIG" ]; then args+=(--config "$INPUT_CONFIG"); fi
+        if [ -n "$INPUT_CHECKS" ]; then args+=(--checks "$INPUT_CHECKS"); fi
+        if [ "$INPUT_DEEP" = "true" ]; then args+=(--deep); fi
+        if [ "$INPUT_USERS" = "true" ]; then args+=(--users); fi
+        if [ -n "$INPUT_SNAPSHOT" ]; then args+=(--input "$INPUT_SNAPSHOT"); fi
+        if [ "$INPUT_JOB_SUMMARY" = "true" ]; then args+=(--summary "$GITHUB_STEP_SUMMARY"); fi
+        node "$GITHUB_ACTION_PATH/bin/statsig-audit.js" "${args[@]}"

@@ -1,0 +1,25 @@
+node_modules/
+*.log
+*.tgz
+
+# reports and snapshots hold project data: names, rules, owners. Never commit them.
+statsig-audit-report.md
+statsig-audit-report.json
+*.snapshot.json
+snapshot.json
+!test/fixtures/snapshot.json
+
+# local config may name real entities in its ignore list
+.statsig-audit.json
+!examples/.statsig-audit.json
+
+# secrets
+.env
+.env.*
+
+# editor, agent and OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.claude/settings.local.json
