@@ -40,7 +40,11 @@ read -rs STATSIG_CONSOLE_API_KEY && export STATSIG_CONSOLE_API_KEY
 ```
 
 ```powershell
-$env:STATSIG_CONSOLE_API_KEY = Read-Host -MaskInput "Console API key"   # PowerShell 7.1 or newer
+# PowerShell 7.1 or newer
+$env:STATSIG_CONSOLE_API_KEY = Read-Host -MaskInput "Console API key"
+
+# Windows PowerShell 5.1
+$env:STATSIG_CONSOLE_API_KEY = [Net.NetworkCredential]::new('', (Read-Host -AsSecureString "Console API key")).Password
 ```
 
 **3. Run it.**
@@ -131,13 +135,15 @@ Every threshold and its default is listed in [docs/config.schema.json](docs/conf
 
 ```yaml
 - uses: actions/checkout@v7 # only needed for a .statsig-audit.json in the repository
-- uses: ardaasaroglu/statsig-audit@v0
+- uses: ardaasaroglu/statsig-audit@306ed40f7e8be3c53e15f28398bb0483acfa9bbc # v0.1.0
   id: audit
   with:
     fail-on: high
   env:
     STATSIG_CONSOLE_API_KEY: ${{ secrets.STATSIG_CONSOLE_API_KEY }}
 ```
+
+The action receives your key, so the example pins it to the full commit of a release, like the `#v0.1.0` tag for npx. `@v0` also works and follows the latest 0.x release.
 
 The action writes the report to `statsig-audit-report.md` (or `.json`) and to the job summary, and fails the step when `fail-on` is met. Inputs: `fail-on`, `format`, `output`, `config`, `checks`, `deep`, `users`, `input` and `job-summary`. Outputs: `report`, `findings`, `high`, `medium`, `low` and `score`. It runs the `node` already on the runner, which must be version 20 or newer. GitHub-hosted runners include Node.js. On a self-hosted runner, add `actions/setup-node` before it.
 

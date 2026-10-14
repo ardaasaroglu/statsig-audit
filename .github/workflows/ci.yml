@@ -57,7 +57,7 @@ jobs:
           diff report.md examples/sample-report.md
           test "$FINDINGS" -gt 0
           test "$HIGH" -gt 0
-      - name: Run again with fail-on high
+      - name: Run again with fail-on high (expected to fail the step)
         id: strict
         continue-on-error: true
         uses: ./
