@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v7
 
       - name: Audit the Statsig project
-        uses: ardaasaroglu/statsig-audit@306ed40f7e8be3c53e15f28398bb0483acfa9bbc # v0.1.0
+        uses: ardaasaroglu/statsig-audit@33cda1261b325d18c66c48957c7a2ecd95853043 # v0.2.0
         with:
           fail-on: high
         env:

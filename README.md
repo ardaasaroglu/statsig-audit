@@ -136,7 +136,7 @@ Every threshold and its default is listed in [docs/config.schema.json](docs/conf
 
 ```yaml
 - uses: actions/checkout@v7 # only needed for a .statsig-audit.json in the repository
-- uses: ardaasaroglu/statsig-audit@306ed40f7e8be3c53e15f28398bb0483acfa9bbc # v0.1.0
+- uses: ardaasaroglu/statsig-audit@33cda1261b325d18c66c48957c7a2ecd95853043 # v0.2.0
   id: audit
   with:
     fail-on: high
