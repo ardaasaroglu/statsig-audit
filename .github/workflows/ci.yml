@@ -80,8 +80,9 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 22
-      - name: Validate the Claude Code marketplace, plugin manifest and skill
+      - name: The plugin's engine copy, references and sample match their sources
+        run: node scripts/build-plugin.mjs --check
+      - name: Validate the marketplace at the root, and the plugin with its skill
         run: |
           npx -y @anthropic-ai/claude-code@2.1.295 plugin validate . --strict
-          npx -y @anthropic-ai/claude-code@2.1.295 plugin validate .claude-plugin/plugin.json --strict
-          npx -y @anthropic-ai/claude-code@2.1.295 plugin validate skills --strict
+          npx -y @anthropic-ai/claude-code@2.1.295 plugin validate ./plugin --strict

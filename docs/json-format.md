@@ -9,7 +9,7 @@
 | Field | Type | Meaning |
 | --- | --- | --- |
 | `schemaVersion` | `1` | Version of this format. |
-| `tool` | object | `{ "name": "statsig-audit", "version": "0.1.0" }` |
+| `tool` | object | `{ "name": "statsig-audit", "version": "0.2.0" }` |
 | `evaluatedAt` | string | ISO 8601 time that ages were counted to. With `--input` this is the snapshot time unless `--now` is given. |
 | `snapshot` | object | Where the data came from, see below. |
 | `summary` | object | Counts, score and inventory, see below. |

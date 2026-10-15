@@ -97,4 +97,4 @@ runs:
         if [ "$INPUT_USERS" = "true" ]; then args+=(--users); fi
         if [ -n "$INPUT_SNAPSHOT" ]; then args+=(--input "$INPUT_SNAPSHOT"); fi
         if [ "$INPUT_JOB_SUMMARY" = "true" ]; then args+=(--summary "$GITHUB_STEP_SUMMARY"); fi
-        node "$GITHUB_ACTION_PATH/bin/statsig-audit.js" "${args[@]}"
+        node "$GITHUB_ACTION_PATH/cli/statsig-audit.js" "${args[@]}"

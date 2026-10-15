@@ -1,0 +1,2719 @@
+{
+  "$comment": "A fictional sample project for trying the audit. Generated from test/fixtures/snapshot.json by scripts/build-plugin.mjs. Edit the source, then run npm run build:plugin.",
+  "schemaVersion": 1,
+  "tool": "statsig-audit",
+  "fetchedAt": "2026-10-14T09:00:00.000Z",
+  "source": "fixture",
+  "project": {
+    "name": "Acme Pantry (fictional)"
+  },
+  "collected": {
+    "auditLogDays": 30,
+    "deep": true,
+    "includesArchivedGates": true
+  },
+  "unavailable": {},
+  "gates": [
+    {
+      "id": "new_checkout_flow",
+      "name": "new_checkout_flow",
+      "description": "Two-step checkout with saved payment methods.",
+      "owner": {
+        "ownerID": "u_avery",
+        "ownerType": "USER",
+        "ownerName": "Avery Chen",
+        "ownerEmail": "avery.chen@acme-pantry.example"
+      },
+      "tags": [
+        "checkout"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1788426000000,
+      "creatorName": "Avery Chen",
+      "lastModifierName": "Avery Chen",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/new_checkout_flow",
+      "idType": "userID",
+      "status": "In Progress",
+      "isEnabled": true,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "checksPerHour": 1200,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_staff:100.00:1",
+          "baseID": "r_staff",
+          "name": "Staff",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "email",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": [
+                "avery.chen@acme-pantry.example",
+                "jordan.blake@acme-pantry.example",
+                "morgan.ellis@acme-pantry.example",
+                "riley.santos@acme-pantry.example",
+                "sam.okafor@acme-pantry.example",
+                "lee.park@acme-pantry.example",
+                "noor.haddad@acme-pantry.example ",
+                "tomas.ruiz@acme-pantry.exmple"
+              ]
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        },
+        {
+          "id": "r_beta_25_:25.00:1",
+          "baseID": "r_beta_25_",
+          "name": "Beta 25%",
+          "passPercentage": 25,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "public",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": null
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "express_delivery_enabled",
+      "name": "express_delivery_enabled",
+      "description": "Under-one-hour delivery in launch cities.",
+      "owner": {
+        "ownerID": "u_jordan",
+        "ownerType": "USER",
+        "ownerName": "Jordan Blake",
+        "ownerEmail": "jordan.blake@acme-pantry.example"
+      },
+      "tags": [
+        "delivery"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1783846800000,
+      "creatorName": "Jordan Blake",
+      "lastModifierName": "Jordan Blake",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/express_delivery_enabled",
+      "idType": "userID",
+      "status": "Launched",
+      "isEnabled": true,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "checksPerHour": 900,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_everyone:100.00:1",
+          "baseID": "r_everyone",
+          "name": "Everyone",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "public",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": null
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "holiday_banner_2025",
+      "name": "holiday_banner_2025",
+      "description": "Banner for the 2025 holiday season.",
+      "owner": {
+        "ownerID": "u_morgan",
+        "ownerType": "USER",
+        "ownerName": "Morgan Ellis",
+        "ownerEmail": "morgan.ellis@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1781600400000,
+      "creatorName": "Morgan Ellis",
+      "lastModifierName": "Morgan Ellis",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/holiday_banner_2025",
+      "idType": "userID",
+      "status": "In Progress",
+      "isEnabled": true,
+      "type": "STALE",
+      "typeReason": "STALE_PROBABLY_DEAD_CHECK",
+      "checksPerHour": 0,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_everyone:100.00:1",
+          "baseID": "r_everyone",
+          "name": "Everyone",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "public",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": null
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "saved_carts",
+      "name": "saved_carts",
+      "description": "Keep carts across devices.",
+      "owner": {
+        "ownerID": "u_avery",
+        "ownerType": "USER",
+        "ownerName": "Avery Chen",
+        "ownerEmail": "avery.chen@acme-pantry.example"
+      },
+      "tags": [
+        "checkout"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1785488400000,
+      "creatorName": "Avery Chen",
+      "lastModifierName": "Avery Chen",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/saved_carts",
+      "idType": "userID",
+      "status": "In Progress",
+      "isEnabled": true,
+      "type": "STALE",
+      "typeReason": "STALE_PROBABLY_LAUNCHED",
+      "checksPerHour": 900,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_everyone:100.00:1",
+          "baseID": "r_everyone",
+          "name": "Everyone",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "public",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": null
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "old_search_ranking",
+      "name": "old_search_ranking",
+      "description": "Previous search ranking model.",
+      "owner": {
+        "ownerID": "u_casey",
+        "ownerType": "USER",
+        "ownerName": "Casey Novak",
+        "ownerEmail": "casey.novak@acme-pantry.example"
+      },
+      "tags": [
+        "search"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1786525200000,
+      "creatorName": "Casey Novak",
+      "lastModifierName": "Casey Novak",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/old_search_ranking",
+      "idType": "userID",
+      "status": "In Progress",
+      "isEnabled": true,
+      "type": "STALE",
+      "typeReason": "STALE_ALL_FALSE",
+      "checksPerHour": 900,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_legacy_cohort:0.00:1",
+          "baseID": "r_legacy_cohort",
+          "name": "Legacy cohort",
+          "passPercentage": 0,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "user_id",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": [
+                "1001",
+                "1002",
+                "1003"
+              ]
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "substitutions_v2",
+      "name": "substitutions_v2",
+      "description": "New out-of-stock substitution picker.",
+      "owner": {
+        "ownerID": "u_riley",
+        "ownerType": "USER",
+        "ownerName": "Riley Santos",
+        "ownerEmail": "riley.santos@acme-pantry.example"
+      },
+      "tags": [
+        "delivery"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1787475600000,
+      "creatorName": "Riley Santos",
+      "lastModifierName": "Riley Santos",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/substitutions_v2",
+      "idType": "userID",
+      "status": "In Progress",
+      "isEnabled": true,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "checksPerHour": 900,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_everyone:100.00:1",
+          "baseID": "r_everyone",
+          "name": "Everyone",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "public",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": null
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "smart_reorder",
+      "name": "smart_reorder",
+      "description": "Suggest a reorder of the last basket.",
+      "owner": {
+        "ownerID": "u_jordan",
+        "ownerType": "USER",
+        "ownerName": "Jordan Blake",
+        "ownerEmail": "jordan.blake@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1791104400000,
+      "creatorName": "Jordan Blake",
+      "lastModifierName": "Jordan Blake",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/smart_reorder",
+      "idType": "userID",
+      "status": "In Progress",
+      "isEnabled": true,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "checksPerHour": 900,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_everyone:50.00:1",
+          "baseID": "r_everyone",
+          "name": "Everyone",
+          "passPercentage": 50,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "public",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": null
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        },
+        {
+          "id": "r_staff:100.00:1",
+          "baseID": "r_staff",
+          "name": "Staff",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "passes_segment",
+              "operator": null,
+              "field": null,
+              "customID": null,
+              "targetValue": [
+                "internal_staff"
+              ]
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "loyalty_points",
+      "name": "loyalty_points",
+      "description": "Earn points on every order.",
+      "owner": {
+        "ownerID": "u_morgan",
+        "ownerType": "USER",
+        "ownerName": "Morgan Ellis",
+        "ownerEmail": "morgan.ellis@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1790240400000,
+      "creatorName": "Morgan Ellis",
+      "lastModifierName": "Morgan Ellis",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/loyalty_points",
+      "idType": "userID",
+      "status": "In Progress",
+      "isEnabled": true,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "checksPerHour": 900,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_loyalty_members:100.00:1",
+          "baseID": "r_loyalty_members",
+          "name": "Loyalty members",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "passes_segment",
+              "operator": null,
+              "field": null,
+              "customID": null,
+              "targetValue": [
+                "loyalty_members_v1"
+              ]
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        },
+        {
+          "id": "r_substitution_users:100.00:1",
+          "baseID": "r_substitution_users",
+          "name": "Substitution users",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "passes_gate",
+              "operator": null,
+              "field": null,
+              "customID": null,
+              "targetValue": [
+                "substitutions_v2"
+              ]
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "gift_cards",
+      "name": "gift_cards",
+      "description": "Sell digital gift cards.",
+      "owner": {
+        "ownerID": "u_riley",
+        "ownerType": "USER",
+        "ownerName": "Riley Santos",
+        "ownerEmail": "riley.santos@acme-pantry.example"
+      },
+      "tags": [
+        "checkout"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1790672400000,
+      "creatorName": "Riley Santos",
+      "lastModifierName": "Riley Santos",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/gift_cards",
+      "idType": "userID",
+      "status": "In Progress",
+      "isEnabled": true,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "checksPerHour": 900,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_pilot_stores:100.00:1",
+          "baseID": "r_pilot_stores",
+          "name": "Pilot stores",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "custom_field",
+              "operator": "any",
+              "field": "store_id",
+              "customID": null,
+              "targetValue": []
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "wine_delivery",
+      "name": "wine_delivery",
+      "description": "Wine in the catalog where the law allows it.",
+      "owner": {
+        "ownerID": "u_avery",
+        "ownerType": "USER",
+        "ownerName": "Avery Chen",
+        "ownerEmail": "avery.chen@acme-pantry.example"
+      },
+      "tags": [
+        "delivery"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1790413200000,
+      "creatorName": "Avery Chen",
+      "lastModifierName": "Avery Chen",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/wine_delivery",
+      "idType": "userID",
+      "status": "In Progress",
+      "isEnabled": true,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "checksPerHour": 900,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_verified_adults:100.00:1",
+          "baseID": "r_verified_adults",
+          "name": "Verified adults",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "passes_gate",
+              "operator": null,
+              "field": null,
+              "customID": null,
+              "targetValue": [
+                "age_verification_beta"
+              ]
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        },
+        {
+          "id": "r_legacy_beta:100.00:1",
+          "baseID": "r_legacy_beta",
+          "name": "Legacy beta",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "passes_segment",
+              "operator": null,
+              "field": null,
+              "customID": null,
+              "targetValue": [
+                "legacy_beta_users"
+              ]
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "age_verification_beta",
+      "name": "age_verification_beta",
+      "description": "Age check before alcohol orders.",
+      "owner": {
+        "ownerID": "u_avery",
+        "ownerType": "USER",
+        "ownerName": "Avery Chen",
+        "ownerEmail": "avery.chen@acme-pantry.example"
+      },
+      "tags": [
+        "delivery"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1788512400000,
+      "creatorName": "Avery Chen",
+      "lastModifierName": "Avery Chen",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/age_verification_beta",
+      "idType": "userID",
+      "status": "Archived",
+      "isEnabled": true,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "checksPerHour": 900,
+      "archivedAt": 1788512400000,
+      "rules": [
+        {
+          "id": "r_everyone:100.00:1",
+          "baseID": "r_everyone",
+          "name": "Everyone",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "public",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": null
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "dark_mode",
+      "name": "dark_mode",
+      "description": "Dark theme in the apps. Permanent user setting.",
+      "owner": {
+        "ownerID": "u_riley",
+        "ownerType": "USER",
+        "ownerName": "Riley Santos",
+        "ownerEmail": "riley.santos@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1774688400000,
+      "creatorName": "Riley Santos",
+      "lastModifierName": "Riley Santos",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/dark_mode",
+      "idType": "userID",
+      "status": "In Progress",
+      "isEnabled": true,
+      "type": "PERMANENT",
+      "typeReason": "NONE",
+      "checksPerHour": 5000,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_everyone:100.00:1",
+          "baseID": "r_everyone",
+          "name": "Everyone",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "public",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": null
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "driver_tips_v2",
+      "name": "driver_tips_v2",
+      "description": "New tipping screen after delivery.",
+      "owner": {
+        "ownerID": "u_jordan",
+        "ownerType": "USER",
+        "ownerName": "Jordan Blake",
+        "ownerEmail": "jordan.blake@acme-pantry.example"
+      },
+      "tags": [
+        "delivery"
+      ],
+      "createdTime": 1788512400000,
+      "lastModifiedTime": 1790931600000,
+      "creatorName": "Jordan Blake",
+      "lastModifierName": "Jordan Blake",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/driver_tips_v2",
+      "idType": "userID",
+      "status": "In Progress",
+      "isEnabled": true,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "checksPerHour": 0,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_pilot_drivers:100.00:1",
+          "baseID": "r_pilot_drivers",
+          "name": "Pilot drivers",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "user_id",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": [
+                "d-204",
+                "d-311",
+                "d-478"
+              ]
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "seasonal_bundles",
+      "name": "seasonal_bundles",
+      "description": "Seasonal product bundles on the home screen.",
+      "owner": {
+        "ownerID": "u_morgan",
+        "ownerType": "USER",
+        "ownerName": "Morgan Ellis",
+        "ownerEmail": "morgan.ellis@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1789376400000,
+      "lastModifiedTime": 1791190800000,
+      "creatorName": "Morgan Ellis",
+      "lastModifierName": "Morgan Ellis",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/seasonal_bundles",
+      "idType": "userID",
+      "status": "In Progress",
+      "isEnabled": true,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "checksPerHour": 0,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_everyone:100.00:1",
+          "baseID": "r_everyone",
+          "name": "Everyone",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "public",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": null
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "test_gate_copy",
+      "name": "test_gate_copy",
+      "description": "",
+      "owner": {
+        "ownerID": "key_console_1",
+        "ownerType": "SDK_KEY",
+        "ownerName": "CONSOLE API",
+        "ownerEmail": ""
+      },
+      "tags": [],
+      "createdTime": 1774688400000,
+      "lastModifiedTime": 1789808400000,
+      "creatorName": "CONSOLE API",
+      "lastModifierName": "CONSOLE API",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/test_gate_copy",
+      "idType": "userID",
+      "status": "In Progress",
+      "isEnabled": true,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "checksPerHour": 2,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_feedback_panel:100.00:1",
+          "baseID": "r_feedback_panel",
+          "name": "Feedback panel",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "email",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": [
+                "kim.sato@acme-pantry.example",
+                "ola.berg@acme-pantry.example",
+                "ines.costa@acme-pantry.example",
+                "raj.mehta@acme-pantry.example",
+                "zoe.adams@acme-pantry.example",
+                "ben.cole@acme-pantry.example"
+              ]
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "promo_engine_kill_switch",
+      "name": "promo_engine_kill_switch",
+      "description": "Turns the promotions engine off during incidents.",
+      "owner": {
+        "ownerID": "u_morgan",
+        "ownerType": "USER",
+        "ownerName": "Morgan Ellis",
+        "ownerEmail": "morgan.ellis@acme-pantry.example"
+      },
+      "tags": [
+        "checkout"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1773824400000,
+      "creatorName": "Morgan Ellis",
+      "lastModifierName": "Morgan Ellis",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/promo_engine_kill_switch",
+      "idType": "userID",
+      "status": "Launched",
+      "isEnabled": true,
+      "type": "PERMANENT",
+      "typeReason": "NONE",
+      "checksPerHour": 900,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_everyone:100.00:1",
+          "baseID": "r_everyone",
+          "name": "Everyone",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "public",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": null
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "recipe_cards",
+      "name": "recipe_cards",
+      "description": "Recipe cards on product pages.",
+      "owner": {
+        "ownerID": "u_riley",
+        "ownerType": "USER",
+        "ownerName": "Riley Santos",
+        "ownerEmail": "riley.santos@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1791709200000,
+      "creatorName": "Riley Santos",
+      "lastModifierName": "Riley Santos",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/recipe_cards",
+      "idType": "userID",
+      "status": "In Progress",
+      "isEnabled": true,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "checksPerHour": 900,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_staff:100.00:1",
+          "baseID": "r_staff",
+          "name": "Staff",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "passes_segment",
+              "operator": null,
+              "field": null,
+              "customID": null,
+              "targetValue": [
+                "internal_staff"
+              ]
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        },
+        {
+          "id": "r_rollout:10.00:1",
+          "baseID": "r_rollout",
+          "name": "Rollout",
+          "passPercentage": 10,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "public",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": null
+            }
+          ],
+          "pendingAutomatedRollouts": [
+            {
+              "time": 1792141200000,
+              "passPercent": 25
+            }
+          ]
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "Pantry-Scanner",
+      "name": "Pantry-Scanner",
+      "description": "Barcode scanner for adding pantry items.",
+      "owner": {
+        "ownerID": "u_riley",
+        "ownerType": "USER",
+        "ownerName": "Riley Santos",
+        "ownerEmail": "riley.santos@acme-pantry.example"
+      },
+      "tags": [
+        "pricing"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1791536400000,
+      "creatorName": "Riley Santos",
+      "lastModifierName": "Riley Santos",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/Pantry-Scanner",
+      "idType": "userID",
+      "status": "In Progress",
+      "isEnabled": true,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "checksPerHour": 900,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_everyone:100.00:1",
+          "baseID": "r_everyone",
+          "name": "Everyone",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "public",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": null
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "churn_survey",
+      "name": "churn_survey",
+      "description": "Exit survey for cancelled subscriptions.",
+      "owner": {
+        "ownerID": "u_morgan",
+        "ownerType": "USER",
+        "ownerName": "Morgan Ellis",
+        "ownerEmail": "morgan.ellis@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1785920400000,
+      "creatorName": "Morgan Ellis",
+      "lastModifierName": "Morgan Ellis",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/churn_survey",
+      "idType": "userID",
+      "status": "Disabled",
+      "isEnabled": false,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "checksPerHour": 900,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_cancelled:100.00:1",
+          "baseID": "r_cancelled",
+          "name": "Cancelled",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "custom_field",
+              "operator": "any",
+              "field": "plan_status",
+              "customID": null,
+              "targetValue": [
+                "cancelled"
+              ]
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "delivery_fee_override",
+      "name": "delivery_fee_override",
+      "description": "Waives the delivery fee in bad weather.",
+      "owner": {
+        "ownerID": "u_jordan",
+        "ownerType": "USER",
+        "ownerName": "Jordan Blake",
+        "ownerEmail": "jordan.blake@acme-pantry.example"
+      },
+      "tags": [
+        "delivery"
+      ],
+      "createdTime": 1776416400000,
+      "lastModifiedTime": 1791882000000,
+      "creatorName": "Jordan Blake",
+      "lastModifierName": "Jordan Blake",
+      "permalink": "https://console.statsig.com/acme-pantry-example/gates/delivery_fee_override",
+      "idType": "userID",
+      "status": "In Progress",
+      "isEnabled": true,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "checksPerHour": 900,
+      "archivedAt": null,
+      "rules": [
+        {
+          "id": "r_bad_weather:100.00:1",
+          "baseID": "r_bad_weather",
+          "name": "Bad weather",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "custom_field",
+              "operator": "any",
+              "field": "weather",
+              "customID": null,
+              "targetValue": [
+                "rain",
+                "snow"
+              ]
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    }
+  ],
+  "dynamicConfigs": [
+    {
+      "id": "checkout_copy",
+      "name": "checkout_copy",
+      "description": "Button and header text on checkout.",
+      "owner": {
+        "ownerID": "u_avery",
+        "ownerType": "USER",
+        "ownerName": "Avery Chen",
+        "ownerEmail": "avery.chen@acme-pantry.example"
+      },
+      "tags": [
+        "checkout"
+      ],
+      "createdTime": 1779008400000,
+      "lastModifiedTime": 1784365200000,
+      "creatorName": "Avery Chen",
+      "lastModifierName": "Avery Chen",
+      "permalink": "https://console.statsig.com/acme-pantry-example/dynamic_configs/checkout_copy",
+      "idType": "userID",
+      "status": "Enabled",
+      "isEnabled": true,
+      "type": "STALE",
+      "typeReason": "STALE_PROBABLY_LAUNCHED",
+      "isPermanent": false,
+      "checksPerHour": 400,
+      "rules": [
+        {
+          "id": "r_everyone:100.00:1",
+          "baseID": "r_everyone",
+          "name": "Everyone",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "public",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": null
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": null
+    },
+    {
+      "id": "delivery_slots_config",
+      "name": "delivery_slots_config",
+      "description": "Slot length and lead time per city.",
+      "owner": {
+        "ownerID": "u_jordan",
+        "ownerType": "USER",
+        "ownerName": "Jordan Blake",
+        "ownerEmail": "jordan.blake@acme-pantry.example"
+      },
+      "tags": [
+        "delivery"
+      ],
+      "createdTime": 1779008400000,
+      "lastModifiedTime": 1790240400000,
+      "creatorName": "Jordan Blake",
+      "lastModifierName": "Jordan Blake",
+      "permalink": "https://console.statsig.com/acme-pantry-example/dynamic_configs/delivery_slots_config",
+      "idType": "userID",
+      "status": "Enabled",
+      "isEnabled": true,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "isPermanent": false,
+      "checksPerHour": 400,
+      "rules": [
+        {
+          "id": "r_big_cities:100.00:1",
+          "baseID": "r_big_cities",
+          "name": "Big cities",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "custom_field",
+              "operator": "any",
+              "field": "city_tier",
+              "customID": null,
+              "targetValue": [
+                "metro"
+              ]
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": null
+    },
+    {
+      "id": "beta_feedback_widget",
+      "name": "beta_feedback_widget",
+      "description": "Settings for the in-app feedback panel.",
+      "owner": {
+        "ownerID": "u_riley",
+        "ownerType": "USER",
+        "ownerName": "Riley Santos",
+        "ownerEmail": "riley.santos@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1779008400000,
+      "lastModifiedTime": 1790240400000,
+      "creatorName": "Riley Santos",
+      "lastModifierName": "Riley Santos",
+      "permalink": "https://console.statsig.com/acme-pantry-example/dynamic_configs/beta_feedback_widget",
+      "idType": "userID",
+      "status": "Enabled",
+      "isEnabled": true,
+      "type": "TEMPORARY",
+      "typeReason": "NONE",
+      "isPermanent": false,
+      "checksPerHour": 400,
+      "rules": [
+        {
+          "id": "r_panel_members:100.00:1",
+          "baseID": "r_panel_members",
+          "name": "Panel members",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "email",
+              "operator": "any",
+              "field": null,
+              "customID": null,
+              "targetValue": [
+                "ben.cole@acme-pantry.example",
+                "zoe.adams@acme-pantry.example",
+                "raj.mehta@acme-pantry.example",
+                "ines.costa@acme-pantry.example",
+                "ola.berg@acme-pantry.example",
+                "kim.sato@acme-pantry.example"
+              ]
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ],
+      "reviewSettings": null
+    }
+  ],
+  "experiments": [
+    {
+      "id": "checkout_button_copy",
+      "name": "checkout_button_copy",
+      "description": "Copy test on the pay button.",
+      "owner": {
+        "ownerID": "u_avery",
+        "ownerType": "USER",
+        "ownerName": "Avery Chen",
+        "ownerEmail": "avery.chen@acme-pantry.example"
+      },
+      "tags": [
+        "checkout"
+      ],
+      "createdTime": 1786784400000,
+      "lastModifiedTime": 1791104400000,
+      "creatorName": "Avery Chen",
+      "lastModifierName": "Avery Chen",
+      "permalink": "https://console.statsig.com/acme-pantry-example/experiments/checkout_button_copy",
+      "idType": "userID",
+      "status": "active",
+      "isStale": false,
+      "experimentType": "BASE",
+      "hypothesis": "Saying 'Pay now' instead of 'Continue' makes the last step clearer and lifts checkout conversion by 2%.",
+      "startTime": 1788512400000,
+      "endTime": null,
+      "decisionTime": null,
+      "decisionReason": null,
+      "launchedGroupID": null,
+      "duration": 14,
+      "targetExposures": null,
+      "allocation": 100,
+      "layerID": null,
+      "targetingGateID": null,
+      "groups": [
+        {
+          "id": "checkout_button_copy_control",
+          "name": "Control",
+          "size": 50,
+          "disabled": false,
+          "isControl": true
+        },
+        {
+          "id": "checkout_button_copy_test",
+          "name": "Test",
+          "size": 50,
+          "disabled": false,
+          "isControl": false
+        }
+      ],
+      "primaryMetrics": [
+        {
+          "name": "checkout_conversion",
+          "type": "ratio"
+        }
+      ],
+      "secondaryMetrics": [],
+      "bonferroniCorrection": false,
+      "bonferroniCorrectionPerMetric": false,
+      "benjaminiHochbergPerVariant": false,
+      "benjaminiHochbergPerMetric": false,
+      "healthCheckStatus": "PASSED",
+      "healthChecks": [],
+      "inlineTargetingRules": [],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "delivery_eta_display",
+      "name": "delivery_eta_display",
+      "description": "Show a live ETA range instead of a single time.",
+      "owner": {
+        "ownerID": "u_jordan",
+        "ownerType": "USER",
+        "ownerName": "Jordan Blake",
+        "ownerEmail": "jordan.blake@acme-pantry.example"
+      },
+      "tags": [
+        "delivery"
+      ],
+      "createdTime": 1786784400000,
+      "lastModifiedTime": 1791104400000,
+      "creatorName": "Jordan Blake",
+      "lastModifierName": "Jordan Blake",
+      "permalink": "https://console.statsig.com/acme-pantry-example/experiments/delivery_eta_display",
+      "idType": "userID",
+      "status": "active",
+      "isStale": false,
+      "experimentType": "BASE",
+      "hypothesis": "A range instead of a single time sets honest expectations, so delivery ratings go up and support tickets go down.",
+      "startTime": 1790931600000,
+      "endTime": null,
+      "decisionTime": null,
+      "decisionReason": null,
+      "launchedGroupID": null,
+      "duration": 21,
+      "targetExposures": 20000,
+      "allocation": 100,
+      "layerID": null,
+      "targetingGateID": null,
+      "groups": [
+        {
+          "id": "eta_control",
+          "name": "Single time",
+          "size": 34,
+          "disabled": false,
+          "isControl": true
+        },
+        {
+          "id": "eta_range",
+          "name": "Range",
+          "size": 33,
+          "disabled": false,
+          "isControl": false
+        },
+        {
+          "id": "eta_live",
+          "name": "Live map",
+          "size": 33,
+          "disabled": false,
+          "isControl": false
+        }
+      ],
+      "primaryMetrics": [
+        {
+          "name": "delivery_rating",
+          "type": "mean"
+        },
+        {
+          "name": "basket_size",
+          "type": "mean"
+        },
+        {
+          "name": "order_value",
+          "type": "sum"
+        }
+      ],
+      "secondaryMetrics": [
+        {
+          "name": "late_deliveries",
+          "type": "event_count_custom"
+        }
+      ],
+      "bonferroniCorrection": false,
+      "bonferroniCorrectionPerMetric": false,
+      "benjaminiHochbergPerVariant": false,
+      "benjaminiHochbergPerMetric": false,
+      "healthCheckStatus": "FAILED",
+      "healthChecks": [
+        {
+          "name": "Exposures are balanced",
+          "status": "FAILED",
+          "type": "has_balanced_exposures"
+        },
+        {
+          "name": "Metrics have data",
+          "status": "PASSED",
+          "type": "has_event_metrics"
+        }
+      ],
+      "inlineTargetingRules": [],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "substitution_suggestions",
+      "name": "substitution_suggestions",
+      "description": "Suggest substitutes before checkout.",
+      "owner": {
+        "ownerID": "u_morgan",
+        "ownerType": "USER",
+        "ownerName": "Morgan Ellis",
+        "ownerEmail": "morgan.ellis@acme-pantry.example"
+      },
+      "tags": [
+        "delivery"
+      ],
+      "createdTime": 1786784400000,
+      "lastModifiedTime": 1791104400000,
+      "creatorName": "Morgan Ellis",
+      "lastModifierName": "Morgan Ellis",
+      "permalink": "https://console.statsig.com/acme-pantry-example/experiments/substitution_suggestions",
+      "idType": "userID",
+      "status": "active",
+      "isStale": false,
+      "experimentType": "BASE",
+      "hypothesis": "Better substitutes.",
+      "startTime": 1790240400000,
+      "endTime": null,
+      "decisionTime": null,
+      "decisionReason": null,
+      "launchedGroupID": null,
+      "duration": 28,
+      "targetExposures": null,
+      "allocation": 100,
+      "layerID": null,
+      "targetingGateID": "old_search_ranking",
+      "groups": [
+        {
+          "id": "substitution_suggestions_control",
+          "name": "Control",
+          "size": 50,
+          "disabled": false,
+          "isControl": true
+        },
+        {
+          "id": "substitution_suggestions_test",
+          "name": "Test",
+          "size": 50,
+          "disabled": false,
+          "isControl": false
+        }
+      ],
+      "primaryMetrics": [
+        {
+          "name": "order_value",
+          "type": "sum"
+        }
+      ],
+      "secondaryMetrics": [
+        {
+          "name": "support_tickets",
+          "type": "event_count_custom"
+        }
+      ],
+      "bonferroniCorrection": false,
+      "bonferroniCorrectionPerMetric": false,
+      "benjaminiHochbergPerVariant": false,
+      "benjaminiHochbergPerMetric": false,
+      "healthCheckStatus": "PASSED",
+      "healthChecks": [],
+      "inlineTargetingRules": [],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "survey_incentive_test",
+      "name": "survey_incentive_test",
+      "description": "Discount offered in the exit survey.",
+      "owner": {
+        "ownerID": "u_riley",
+        "ownerType": "USER",
+        "ownerName": "Riley Santos",
+        "ownerEmail": "riley.santos@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1791190800000,
+      "lastModifiedTime": 1791190800000,
+      "creatorName": "Riley Santos",
+      "lastModifierName": "Riley Santos",
+      "permalink": "https://console.statsig.com/acme-pantry-example/experiments/survey_incentive_test",
+      "idType": "userID",
+      "status": "setup",
+      "isStale": false,
+      "experimentType": "BASE",
+      "hypothesis": "",
+      "startTime": null,
+      "endTime": null,
+      "decisionTime": null,
+      "decisionReason": null,
+      "launchedGroupID": null,
+      "duration": null,
+      "targetExposures": null,
+      "allocation": 100,
+      "layerID": null,
+      "targetingGateID": "churn_survey",
+      "groups": [
+        {
+          "id": "survey_incentive_test_control",
+          "name": "Control",
+          "size": 50,
+          "disabled": false,
+          "isControl": true
+        },
+        {
+          "id": "survey_incentive_test_test",
+          "name": "Test",
+          "size": 50,
+          "disabled": false,
+          "isControl": false
+        }
+      ],
+      "primaryMetrics": [],
+      "secondaryMetrics": [],
+      "bonferroniCorrection": false,
+      "bonferroniCorrectionPerMetric": false,
+      "benjaminiHochbergPerVariant": false,
+      "benjaminiHochbergPerMetric": false,
+      "healthCheckStatus": "PASSED",
+      "healthChecks": [],
+      "inlineTargetingRules": [],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "homepage_hero_test",
+      "name": "homepage_hero_test",
+      "description": "Seasonal hero versus product grid.",
+      "owner": {
+        "ownerID": "u_avery",
+        "ownerType": "USER",
+        "ownerName": "Avery Chen",
+        "ownerEmail": "avery.chen@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1786784400000,
+      "lastModifiedTime": 1786957200000,
+      "creatorName": "Avery Chen",
+      "lastModifierName": "Avery Chen",
+      "permalink": "https://console.statsig.com/acme-pantry-example/experiments/homepage_hero_test",
+      "idType": "userID",
+      "status": "decision_made",
+      "isStale": false,
+      "experimentType": "BASE",
+      "hypothesis": "A seasonal hero image makes the home page feel current and lifts add-to-cart from the home page by 3%.",
+      "startTime": 1782464400000,
+      "endTime": 1786957200000,
+      "decisionTime": 1786957200000,
+      "decisionReason": "Seasonal hero won on add-to-cart.",
+      "launchedGroupID": "homepage_hero_test_test",
+      "duration": null,
+      "targetExposures": null,
+      "allocation": 100,
+      "layerID": null,
+      "targetingGateID": null,
+      "groups": [
+        {
+          "id": "homepage_hero_test_control",
+          "name": "Product grid",
+          "size": 50,
+          "disabled": false,
+          "isControl": true
+        },
+        {
+          "id": "homepage_hero_test_test",
+          "name": "Seasonal hero",
+          "size": 50,
+          "disabled": false,
+          "isControl": false
+        }
+      ],
+      "primaryMetrics": [
+        {
+          "name": "order_value",
+          "type": "sum"
+        }
+      ],
+      "secondaryMetrics": [
+        {
+          "name": "support_tickets",
+          "type": "event_count_custom"
+        }
+      ],
+      "bonferroniCorrection": false,
+      "bonferroniCorrectionPerMetric": false,
+      "benjaminiHochbergPerVariant": false,
+      "benjaminiHochbergPerMetric": false,
+      "healthCheckStatus": "PASSED",
+      "healthChecks": [],
+      "inlineTargetingRules": [],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "free_delivery_threshold",
+      "name": "free_delivery_threshold",
+      "description": "Lower the free delivery threshold.",
+      "owner": {
+        "ownerID": "u_casey",
+        "ownerType": "USER",
+        "ownerName": "Casey Novak",
+        "ownerEmail": "casey.novak@acme-pantry.example"
+      },
+      "tags": [
+        "pricing"
+      ],
+      "createdTime": 1786784400000,
+      "lastModifiedTime": 1788080400000,
+      "creatorName": "Casey Novak",
+      "lastModifierName": "Casey Novak",
+      "permalink": "https://console.statsig.com/acme-pantry-example/experiments/free_delivery_threshold",
+      "idType": "userID",
+      "status": "abandoned",
+      "isStale": false,
+      "experimentType": "BASE",
+      "hypothesis": "A lower free delivery threshold raises order frequency more than it lowers basket value.",
+      "startTime": 1783328400000,
+      "endTime": 1788080400000,
+      "decisionTime": 1788080400000,
+      "decisionReason": null,
+      "launchedGroupID": null,
+      "duration": null,
+      "targetExposures": null,
+      "allocation": 100,
+      "layerID": null,
+      "targetingGateID": null,
+      "groups": [
+        {
+          "id": "free_delivery_threshold_control",
+          "name": "Control",
+          "size": 50,
+          "disabled": false,
+          "isControl": true
+        },
+        {
+          "id": "free_delivery_threshold_test",
+          "name": "Test",
+          "size": 50,
+          "disabled": false,
+          "isControl": false
+        }
+      ],
+      "primaryMetrics": [
+        {
+          "name": "order_value",
+          "type": "sum"
+        }
+      ],
+      "secondaryMetrics": [
+        {
+          "name": "basket_size",
+          "type": "mean"
+        }
+      ],
+      "bonferroniCorrection": false,
+      "bonferroniCorrectionPerMetric": false,
+      "benjaminiHochbergPerVariant": false,
+      "benjaminiHochbergPerMetric": false,
+      "healthCheckStatus": "PASSED",
+      "healthChecks": [],
+      "inlineTargetingRules": [],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "recipe_recommendations",
+      "name": "recipe_recommendations",
+      "description": "Recipe suggestions based on the basket.",
+      "owner": {
+        "ownerID": "u_riley",
+        "ownerType": "USER",
+        "ownerName": "Riley Santos",
+        "ownerEmail": "riley.santos@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1786784400000,
+      "lastModifiedTime": 1791104400000,
+      "creatorName": "Riley Santos",
+      "lastModifierName": "Riley Santos",
+      "permalink": "https://console.statsig.com/acme-pantry-example/experiments/recipe_recommendations",
+      "idType": "userID",
+      "status": "active",
+      "isStale": false,
+      "experimentType": "BASE",
+      "hypothesis": "Recipes that use what is already in the basket lead to more recipe saves and a larger basket.",
+      "startTime": 1791536400000,
+      "endTime": null,
+      "decisionTime": null,
+      "decisionReason": null,
+      "launchedGroupID": null,
+      "duration": 14,
+      "targetExposures": null,
+      "allocation": 100,
+      "layerID": "discovery_layer",
+      "targetingGateID": null,
+      "groups": [
+        {
+          "id": "recipe_recommendations_control",
+          "name": "Control",
+          "size": 50,
+          "disabled": false,
+          "isControl": true
+        },
+        {
+          "id": "recipe_recommendations_test",
+          "name": "Test",
+          "size": 50,
+          "disabled": false,
+          "isControl": false
+        }
+      ],
+      "primaryMetrics": [
+        {
+          "name": "recipe_saves",
+          "type": "event_count_custom"
+        }
+      ],
+      "secondaryMetrics": [
+        {
+          "name": "order_value",
+          "type": "sum"
+        },
+        {
+          "name": "dau",
+          "type": "user"
+        }
+      ],
+      "bonferroniCorrection": false,
+      "bonferroniCorrectionPerMetric": false,
+      "benjaminiHochbergPerVariant": false,
+      "benjaminiHochbergPerMetric": false,
+      "healthCheckStatus": "PASSED",
+      "healthChecks": [],
+      "inlineTargetingRules": [],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "cart_reminder_timing",
+      "name": "cart_reminder_timing",
+      "description": "When to send the abandoned cart reminder.",
+      "owner": {
+        "ownerID": "u_jordan",
+        "ownerType": "USER",
+        "ownerName": "Jordan Blake",
+        "ownerEmail": "jordan.blake@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1786784400000,
+      "lastModifiedTime": 1791104400000,
+      "creatorName": "Jordan Blake",
+      "lastModifierName": "Jordan Blake",
+      "permalink": "https://console.statsig.com/acme-pantry-example/experiments/cart_reminder_timing",
+      "idType": "userID",
+      "status": "active",
+      "isStale": false,
+      "experimentType": "BASE",
+      "hypothesis": "A reminder two hours after a cart is abandoned recovers more orders than one sent the next morning.",
+      "startTime": 1785488400000,
+      "endTime": null,
+      "decisionTime": null,
+      "decisionReason": null,
+      "launchedGroupID": null,
+      "duration": null,
+      "targetExposures": null,
+      "allocation": 100,
+      "layerID": "growth_layer_v0",
+      "targetingGateID": null,
+      "groups": [
+        {
+          "id": "cart_reminder_timing_control",
+          "name": "Control",
+          "size": 50,
+          "disabled": false,
+          "isControl": true
+        },
+        {
+          "id": "cart_reminder_timing_test",
+          "name": "Test",
+          "size": 50,
+          "disabled": false,
+          "isControl": false
+        }
+      ],
+      "primaryMetrics": [
+        {
+          "name": "order_value",
+          "type": "sum"
+        }
+      ],
+      "secondaryMetrics": [
+        {
+          "name": "support_tickets",
+          "type": "event_count_custom"
+        }
+      ],
+      "bonferroniCorrection": false,
+      "bonferroniCorrectionPerMetric": false,
+      "benjaminiHochbergPerVariant": false,
+      "benjaminiHochbergPerMetric": false,
+      "healthCheckStatus": "PASSED",
+      "healthChecks": [],
+      "inlineTargetingRules": [],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    },
+    {
+      "id": "old_onboarding_test",
+      "name": "old_onboarding_test",
+      "description": "Archived onboarding test.",
+      "owner": {
+        "ownerID": "u_casey",
+        "ownerType": "USER",
+        "ownerName": "Casey Novak",
+        "ownerEmail": "casey.novak@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1786784400000,
+      "lastModifiedTime": 1762592400000,
+      "creatorName": "Casey Novak",
+      "lastModifierName": "Casey Novak",
+      "permalink": "https://console.statsig.com/acme-pantry-example/experiments/old_onboarding_test",
+      "idType": "userID",
+      "status": "archived",
+      "isStale": false,
+      "experimentType": "BASE",
+      "hypothesis": "",
+      "startTime": 1757408400000,
+      "endTime": 1761728400000,
+      "decisionTime": null,
+      "decisionReason": null,
+      "launchedGroupID": null,
+      "duration": null,
+      "targetExposures": null,
+      "allocation": 100,
+      "layerID": null,
+      "targetingGateID": null,
+      "groups": [
+        {
+          "id": "old_onboarding_test_control",
+          "name": "Control",
+          "size": 50,
+          "disabled": false,
+          "isControl": true
+        },
+        {
+          "id": "old_onboarding_test_test",
+          "name": "Test",
+          "size": 50,
+          "disabled": false,
+          "isControl": false
+        }
+      ],
+      "primaryMetrics": [],
+      "secondaryMetrics": [],
+      "bonferroniCorrection": false,
+      "bonferroniCorrectionPerMetric": false,
+      "benjaminiHochbergPerVariant": false,
+      "benjaminiHochbergPerMetric": false,
+      "healthCheckStatus": "PASSED",
+      "healthChecks": [],
+      "inlineTargetingRules": [],
+      "reviewSettings": {
+        "requiredReview": false
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "internal_staff",
+      "name": "internal_staff",
+      "description": "Everyone with a company email.",
+      "owner": {
+        "ownerID": "u_avery",
+        "ownerType": "USER",
+        "ownerName": "Avery Chen",
+        "ownerEmail": "avery.chen@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1778144400000,
+      "lastModifiedTime": 1789808400000,
+      "creatorName": "Avery Chen",
+      "lastModifierName": "Avery Chen",
+      "permalink": "https://console.statsig.com/acme-pantry-example/segments/internal_staff",
+      "idType": "userID",
+      "type": "rule_based",
+      "count": 0,
+      "isEnabled": true,
+      "rules": [
+        {
+          "id": "r_company_email:100.00:1",
+          "baseID": "r_company_email",
+          "name": "Company email",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "email",
+              "operator": "str_contains_any",
+              "field": null,
+              "customID": null,
+              "targetValue": [
+                "@acme-pantry.example"
+              ]
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ]
+    },
+    {
+      "id": "loyalty_members",
+      "name": "loyalty_members",
+      "description": "Customers in the loyalty program.",
+      "owner": {
+        "ownerID": "u_morgan",
+        "ownerType": "USER",
+        "ownerName": "Morgan Ellis",
+        "ownerEmail": "morgan.ellis@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1778144400000,
+      "lastModifiedTime": 1789808400000,
+      "creatorName": "Morgan Ellis",
+      "lastModifierName": "Morgan Ellis",
+      "permalink": "https://console.statsig.com/acme-pantry-example/segments/loyalty_members",
+      "idType": "userID",
+      "type": "id_list",
+      "count": 1520,
+      "isEnabled": true,
+      "rules": []
+    },
+    {
+      "id": "qa_devices",
+      "name": "qa_devices",
+      "description": "Test devices for QA.",
+      "owner": {
+        "ownerID": "u_riley",
+        "ownerType": "USER",
+        "ownerName": "Riley Santos",
+        "ownerEmail": "riley.santos@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1778144400000,
+      "lastModifiedTime": 1789808400000,
+      "creatorName": "Riley Santos",
+      "lastModifierName": "Riley Santos",
+      "permalink": "https://console.statsig.com/acme-pantry-example/segments/qa_devices",
+      "idType": "userID",
+      "type": "id_list",
+      "count": 0,
+      "isEnabled": true,
+      "rules": []
+    },
+    {
+      "id": "legacy_beta_users",
+      "name": "legacy_beta_users",
+      "description": "Old beta program.",
+      "owner": {
+        "ownerID": "u_casey",
+        "ownerType": "USER",
+        "ownerName": "Casey Novak",
+        "ownerEmail": "casey.novak@acme-pantry.example"
+      },
+      "tags": [
+        "legacy"
+      ],
+      "createdTime": 1778144400000,
+      "lastModifiedTime": 1789808400000,
+      "creatorName": "Casey Novak",
+      "lastModifierName": "Casey Novak",
+      "permalink": "https://console.statsig.com/acme-pantry-example/segments/legacy_beta_users",
+      "idType": "userID",
+      "type": "rule_based",
+      "count": 0,
+      "isEnabled": false,
+      "rules": [
+        {
+          "id": "r_beta_flag:100.00:1",
+          "baseID": "r_beta_flag",
+          "name": "Beta flag",
+          "passPercentage": 100,
+          "environments": null,
+          "conditions": [
+            {
+              "type": "custom_field",
+              "operator": "any",
+              "field": "beta",
+              "customID": null,
+              "targetValue": [
+                "true"
+              ]
+            }
+          ],
+          "pendingAutomatedRollouts": []
+        }
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "id": "checkout_conversion::ratio",
+      "name": "checkout_conversion",
+      "description": "Orders divided by checkout starts.",
+      "owner": {
+        "ownerID": "u_avery",
+        "ownerType": "USER",
+        "ownerName": "Avery Chen",
+        "ownerEmail": "avery.chen@acme-pantry.example"
+      },
+      "tags": [
+        "checkout"
+      ],
+      "createdTime": 1766048400000,
+      "lastModifiedTime": 1786784400000,
+      "creatorName": "Avery Chen",
+      "lastModifierName": null,
+      "permalink": "https://console.statsig.com/acme-pantry-example/metrics/metrics_catalog/checkout_conversion/ratio",
+      "type": "ratio",
+      "directionality": "increase",
+      "isVerified": false,
+      "isHidden": false,
+      "isPermanent": false,
+      "isReadOnly": false,
+      "lineage": {
+        "events": [
+          "checkout_start",
+          "order_placed"
+        ],
+        "metrics": []
+      }
+    },
+    {
+      "id": "order_value::sum",
+      "name": "order_value",
+      "description": "Order value in USD.",
+      "owner": {
+        "ownerID": "u_avery",
+        "ownerType": "USER",
+        "ownerName": "Avery Chen",
+        "ownerEmail": "avery.chen@acme-pantry.example"
+      },
+      "tags": [
+        "checkout"
+      ],
+      "createdTime": 1766048400000,
+      "lastModifiedTime": 1786784400000,
+      "creatorName": "Avery Chen",
+      "lastModifierName": null,
+      "permalink": "https://console.statsig.com/acme-pantry-example/metrics/metrics_catalog/order_value/sum",
+      "type": "sum",
+      "directionality": "increase",
+      "isVerified": true,
+      "isHidden": false,
+      "isPermanent": false,
+      "isReadOnly": false,
+      "lineage": {
+        "events": [
+          "order_placed"
+        ],
+        "metrics": []
+      }
+    },
+    {
+      "id": "basket_size::mean",
+      "name": "basket_size",
+      "description": "Items per order.",
+      "owner": {
+        "ownerID": "u_jordan",
+        "ownerType": "USER",
+        "ownerName": "Jordan Blake",
+        "ownerEmail": "jordan.blake@acme-pantry.example"
+      },
+      "tags": [
+        "checkout"
+      ],
+      "createdTime": 1766048400000,
+      "lastModifiedTime": 1786784400000,
+      "creatorName": "Jordan Blake",
+      "lastModifierName": null,
+      "permalink": "https://console.statsig.com/acme-pantry-example/metrics/metrics_catalog/basket_size/mean",
+      "type": "mean",
+      "directionality": "increase",
+      "isVerified": true,
+      "isHidden": true,
+      "isPermanent": false,
+      "isReadOnly": false,
+      "lineage": {
+        "events": [
+          "order_placed"
+        ],
+        "metrics": []
+      }
+    },
+    {
+      "id": "delivery_rating::mean",
+      "name": "delivery_rating",
+      "description": "Star rating after delivery.",
+      "owner": {
+        "ownerID": "u_jordan",
+        "ownerType": "USER",
+        "ownerName": "Jordan Blake",
+        "ownerEmail": "jordan.blake@acme-pantry.example"
+      },
+      "tags": [
+        "delivery"
+      ],
+      "createdTime": 1766048400000,
+      "lastModifiedTime": 1786784400000,
+      "creatorName": "Jordan Blake",
+      "lastModifierName": null,
+      "permalink": "https://console.statsig.com/acme-pantry-example/metrics/metrics_catalog/delivery_rating/mean",
+      "type": "mean",
+      "directionality": "increase",
+      "isVerified": true,
+      "isHidden": false,
+      "isPermanent": false,
+      "isReadOnly": false,
+      "lineage": {
+        "events": [
+          "delivery_rated"
+        ],
+        "metrics": []
+      }
+    },
+    {
+      "id": "late_deliveries::event_count_custom",
+      "name": "late_deliveries",
+      "description": "Deliveries more than 15 minutes late.",
+      "owner": {
+        "ownerID": "u_jordan",
+        "ownerType": "USER",
+        "ownerName": "Jordan Blake",
+        "ownerEmail": "jordan.blake@acme-pantry.example"
+      },
+      "tags": [
+        "delivery"
+      ],
+      "createdTime": 1766048400000,
+      "lastModifiedTime": 1786784400000,
+      "creatorName": "Jordan Blake",
+      "lastModifierName": null,
+      "permalink": "https://console.statsig.com/acme-pantry-example/metrics/metrics_catalog/late_deliveries/event_count_custom",
+      "type": "event_count_custom",
+      "directionality": "decrease",
+      "isVerified": true,
+      "isHidden": false,
+      "isPermanent": false,
+      "isReadOnly": false,
+      "lineage": {
+        "events": [
+          "delivery_late"
+        ],
+        "metrics": []
+      }
+    },
+    {
+      "id": "support_tickets::event_count_custom",
+      "name": "support_tickets",
+      "description": "",
+      "owner": {
+        "ownerID": "u_morgan",
+        "ownerType": "USER",
+        "ownerName": "Morgan Ellis",
+        "ownerEmail": "morgan.ellis@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1766048400000,
+      "lastModifiedTime": 1786784400000,
+      "creatorName": "Morgan Ellis",
+      "lastModifierName": null,
+      "permalink": "https://console.statsig.com/acme-pantry-example/metrics/metrics_catalog/support_tickets/event_count_custom",
+      "type": "event_count_custom",
+      "directionality": "decrease",
+      "isVerified": true,
+      "isHidden": false,
+      "isPermanent": false,
+      "isReadOnly": false,
+      "lineage": {
+        "events": [
+          "ticket_opened"
+        ],
+        "metrics": []
+      }
+    },
+    {
+      "id": "recipe_saves::event_count_custom",
+      "name": "recipe_saves",
+      "description": "Recipes saved to a list.",
+      "owner": {
+        "ownerID": "u_riley",
+        "ownerType": "USER",
+        "ownerName": "Riley Santos",
+        "ownerEmail": "riley.santos@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1766048400000,
+      "lastModifiedTime": 1786784400000,
+      "creatorName": "Riley Santos",
+      "lastModifierName": null,
+      "permalink": "https://console.statsig.com/acme-pantry-example/metrics/metrics_catalog/recipe_saves/event_count_custom",
+      "type": "event_count_custom",
+      "directionality": "increase",
+      "isVerified": true,
+      "isHidden": false,
+      "isPermanent": false,
+      "isReadOnly": false,
+      "lineage": {
+        "events": [
+          "recipe_saved"
+        ],
+        "metrics": []
+      }
+    },
+    {
+      "id": "dau::user",
+      "name": "dau",
+      "description": "",
+      "owner": null,
+      "tags": [],
+      "createdTime": 1766048400000,
+      "lastModifiedTime": 1786784400000,
+      "creatorName": null,
+      "lastModifierName": null,
+      "permalink": "https://console.statsig.com/acme-pantry-example/metrics/metrics_catalog/dau/user",
+      "type": "user",
+      "directionality": "increase",
+      "isVerified": false,
+      "isHidden": false,
+      "isPermanent": false,
+      "isReadOnly": true,
+      "lineage": {
+        "events": [],
+        "metrics": []
+      }
+    },
+    {
+      "id": "d7_retention_rate::user",
+      "name": "d7_retention_rate",
+      "description": "",
+      "owner": null,
+      "tags": [],
+      "createdTime": 1766048400000,
+      "lastModifiedTime": 1786784400000,
+      "creatorName": null,
+      "lastModifierName": null,
+      "permalink": "https://console.statsig.com/acme-pantry-example/metrics/metrics_catalog/d7_retention_rate/user",
+      "type": "user",
+      "directionality": "increase",
+      "isVerified": false,
+      "isHidden": false,
+      "isPermanent": false,
+      "isReadOnly": true,
+      "lineage": {
+        "events": [],
+        "metrics": []
+      }
+    }
+  ],
+  "layers": [
+    {
+      "id": "discovery_layer",
+      "name": "discovery_layer",
+      "description": "Experiments on discovery surfaces.",
+      "owner": {
+        "ownerID": "u_riley",
+        "ownerType": "USER",
+        "ownerName": "Riley Santos",
+        "ownerEmail": "riley.santos@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1774688400000,
+      "lastModifiedTime": 1789376400000,
+      "creatorName": null,
+      "lastModifierName": null,
+      "permalink": "https://console.statsig.com/acme-pantry-example/layers/discovery_layer",
+      "idType": "userID",
+      "isImplicitLayer": false
+    },
+    {
+      "id": "pricing_layer",
+      "name": "pricing_layer",
+      "description": "Mutually exclusive pricing tests.",
+      "owner": {
+        "ownerID": "u_morgan",
+        "ownerType": "USER",
+        "ownerName": "Morgan Ellis",
+        "ownerEmail": "morgan.ellis@acme-pantry.example"
+      },
+      "tags": [
+        "pricing"
+      ],
+      "createdTime": 1770368400000,
+      "lastModifiedTime": 1780736400000,
+      "creatorName": null,
+      "lastModifierName": null,
+      "permalink": "https://console.statsig.com/acme-pantry-example/layers/pricing_layer",
+      "idType": "userID",
+      "isImplicitLayer": false
+    },
+    {
+      "id": "search_layer",
+      "name": "search_layer",
+      "description": "Search ranking experiments.",
+      "owner": {
+        "ownerID": "u_casey",
+        "ownerType": "USER",
+        "ownerName": "Casey Novak",
+        "ownerEmail": "casey.novak@acme-pantry.example"
+      },
+      "tags": [
+        "search"
+      ],
+      "createdTime": 1766048400000,
+      "lastModifiedTime": 1783760400000,
+      "creatorName": null,
+      "lastModifierName": null,
+      "permalink": "https://console.statsig.com/acme-pantry-example/layers/search_layer",
+      "idType": "userID",
+      "isImplicitLayer": false
+    },
+    {
+      "id": "statsig::checkout_button_copy_layer",
+      "name": "statsig::checkout_button_copy_layer",
+      "description": "",
+      "owner": null,
+      "tags": [],
+      "createdTime": 1788512400000,
+      "lastModifiedTime": 1788512400000,
+      "creatorName": null,
+      "lastModifierName": null,
+      "permalink": "https://console.statsig.com/acme-pantry-example/layers/statsig::checkout_button_copy_layer",
+      "idType": "userID",
+      "isImplicitLayer": true
+    }
+  ],
+  "holdouts": [
+    {
+      "id": "q4_global_holdout",
+      "name": "q4_global_holdout",
+      "description": "Two percent of users held back from Q4 launches.",
+      "owner": {
+        "ownerID": "u_avery",
+        "ownerType": "USER",
+        "ownerName": "Avery Chen",
+        "ownerEmail": "avery.chen@acme-pantry.example"
+      },
+      "tags": [
+        "growth"
+      ],
+      "createdTime": 1787648400000,
+      "lastModifiedTime": 1790240400000,
+      "creatorName": null,
+      "lastModifierName": null,
+      "permalink": "https://console.statsig.com/acme-pantry-example/holdouts/q4_global_holdout",
+      "idType": "userID",
+      "isEnabled": true,
+      "passPercentage": 2,
+      "gateIDs": [
+        "express_delivery_enabled",
+        "age_verification_beta"
+      ],
+      "experimentIDs": [
+        "recipe_recommendations"
+      ],
+      "layerIDs": [],
+      "isGlobal": false,
+      "targetingGateID": null
+    }
+  ],
+  "tags": [
+    {
+      "id": "t1",
+      "name": "checkout",
+      "description": "Checkout and payment",
+      "isCore": false
+    },
+    {
+      "id": "t2",
+      "name": "delivery",
+      "description": "Delivery and logistics",
+      "isCore": false
+    },
+    {
+      "id": "t3",
+      "name": "growth",
+      "description": "Growth and engagement",
+      "isCore": false
+    },
+    {
+      "id": "t4",
+      "name": "search",
+      "description": "Search and ranking",
+      "isCore": false
+    },
+    {
+      "id": "t5",
+      "name": "core",
+      "description": "Core metrics",
+      "isCore": true
+    },
+    {
+      "id": "t6",
+      "name": "legacy",
+      "description": "Older programs",
+      "isCore": false
+    },
+    {
+      "id": "t7",
+      "name": "partnerships",
+      "description": "Partner integrations",
+      "isCore": false
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "log_mv6oun40_delivery_fee_override",
+      "name": "delivery_fee_override",
+      "actionType": "config_conditions_update",
+      "date": "Tue Oct 13 2026",
+      "time": "13:00:00 GMT+0000 (Coordinated Universal Time)",
+      "timestamp": 1791896400000,
+      "updatedBy": "Jordan Blake",
+      "updatedByUserID": "u_jordan"
+    },
+    {
+      "id": "log_mv6bzog0_delivery_fee_override",
+      "name": "delivery_fee_override",
+      "actionType": "gate_update",
+      "date": "Tue Oct 13 2026",
+      "time": "07:00:00 GMT+0000 (Coordinated Universal Time)",
+      "timestamp": 1791874800000,
+      "updatedBy": "Morgan Ellis",
+      "updatedByUserID": "u_morgan"
+    },
+    {
+      "id": "log_mv5wzk00_delivery_fee_override",
+      "name": "delivery_fee_override",
+      "actionType": "config_conditions_update",
+      "date": "Tue Oct 13 2026",
+      "time": "00:00:00 GMT+0000 (Coordinated Universal Time)",
+      "timestamp": 1791849600000,
+      "updatedBy": "Jordan Blake",
+      "updatedByUserID": "u_jordan"
+    },
+    {
+      "id": "log_mv4s9i80_delivery_fee_override",
+      "name": "delivery_fee_override",
+      "actionType": "config_state_toggle",
+      "date": "Mon Oct 12 2026",
+      "time": "05:00:00 GMT+0000 (Coordinated Universal Time)",
+      "timestamp": 1791781200000,
+      "updatedBy": "Riley Santos",
+      "updatedByUserID": "u_riley"
+    },
+    {
+      "id": "log_mv4q4cg0_delivery_fee_override",
+      "name": "delivery_fee_override",
+      "actionType": "config_state_toggle",
+      "date": "Mon Oct 12 2026",
+      "time": "04:00:00 GMT+0000 (Coordinated Universal Time)",
+      "timestamp": 1791777600000,
+      "updatedBy": "Riley Santos",
+      "updatedByUserID": "u_riley"
+    },
+    {
+      "id": "log_mv3j94w0_delivery_fee_override",
+      "name": "delivery_fee_override",
+      "actionType": "config_conditions_update",
+      "date": "Sun Oct 11 2026",
+      "time": "08:00:00 GMT+0000 (Coordinated Universal Time)",
+      "timestamp": 1791705600000,
+      "updatedBy": "Jordan Blake",
+      "updatedByUserID": "u_jordan"
+    },
+    {
+      "id": "log_mv0k3400_delivery_fee_override",
+      "name": "delivery_fee_override",
+      "actionType": "gate_update",
+      "date": "Fri Oct 09 2026",
+      "time": "06:00:00 GMT+0000 (Coordinated Universal Time)",
+      "timestamp": 1791525600000,
+      "updatedBy": "Jordan Blake",
+      "updatedByUserID": "u_jordan"
+    },
+    {
+      "id": "log_muyw2m80_delivery_fee_override",
+      "name": "delivery_fee_override",
+      "actionType": "config_conditions_update",
+      "date": "Thu Oct 08 2026",
+      "time": "02:00:00 GMT+0000 (Coordinated Universal Time)",
+      "timestamp": 1791424800000,
+      "updatedBy": "Morgan Ellis",
+      "updatedByUserID": "u_morgan"
+    },
+    {
+      "id": "log_muv0r6o0_delivery_fee_override",
+      "name": "delivery_fee_override",
+      "actionType": "config_conditions_update",
+      "date": "Mon Oct 05 2026",
+      "time": "09:00:00 GMT+0000 (Coordinated Universal Time)",
+      "timestamp": 1791190800000,
+      "updatedBy": "Jordan Blake",
+      "updatedByUserID": "u_jordan"
+    },
+    {
+      "id": "log_mv38jc00_recipe_cards",
+      "name": "recipe_cards",
+      "actionType": "gate_update",
+      "date": "Sun Oct 11 2026",
+      "time": "03:00:00 GMT+0000 (Coordinated Universal Time)",
+      "timestamp": 1791687600000,
+      "updatedBy": "Riley Santos",
+      "updatedByUserID": "u_riley"
+    },
+    {
+      "id": "log_mv1t3hc0_recipe_cards",
+      "name": "recipe_cards",
+      "actionType": "config_conditions_update",
+      "date": "Sat Oct 10 2026",
+      "time": "03:00:00 GMT+0000 (Coordinated Universal Time)",
+      "timestamp": 1791601200000,
+      "updatedBy": "Riley Santos",
+      "updatedByUserID": "u_riley"
+    },
+    {
+      "id": "log_muqm5b40_saved_carts",
+      "name": "saved_carts",
+      "actionType": "gate_stale_status_update",
+      "date": "Fri Oct 02 2026",
+      "time": "07:00:00 GMT+0000 (Coordinated Universal Time)",
+      "timestamp": 1790924400000,
+      "updatedBy": "CONSOLE API",
+      "updatedByUserID": "key_console_1"
+    },
+    {
+      "id": "log_mutcqow0_smart_reorder",
+      "name": "smart_reorder",
+      "actionType": "gate_update",
+      "date": "Sun Oct 04 2026",
+      "time": "05:00:00 GMT+0000 (Coordinated Universal Time)",
+      "timestamp": 1791090000000,
+      "updatedBy": "Jordan Blake",
+      "updatedByUserID": "u_jordan"
+    },
+    {
+      "id": "log_muuubpc0_survey_incentive_test",
+      "name": "survey_incentive_test",
+      "actionType": "experiment_create",
+      "date": "Mon Oct 05 2026",
+      "time": "06:00:00 GMT+0000 (Coordinated Universal Time)",
+      "timestamp": 1791180000000,
+      "updatedBy": "Riley Santos",
+      "updatedByUserID": "u_riley"
+    },
+    {
+      "id": "log_mu83ke80_checkout_copy",
+      "name": "checkout_copy",
+      "actionType": "dynamic_config_stale_status_update",
+      "date": "Sat Sep 19 2026",
+      "time": "08:00:00 GMT+0000 (Coordinated Universal Time)",
+      "timestamp": 1789804800000,
+      "updatedBy": "CONSOLE API",
+      "updatedByUserID": "key_console_1"
+    }
+  ],
+  "users": [
+    {
+      "userID": "u_avery",
+      "email": "avery.chen@acme-pantry.example",
+      "firstName": "Avery",
+      "lastName": "Chen",
+      "role": "admin"
+    },
+    {
+      "userID": "u_jordan",
+      "email": "jordan.blake@acme-pantry.example",
+      "firstName": "Jordan",
+      "lastName": "Blake",
+      "role": "member"
+    },
+    {
+      "userID": "u_morgan",
+      "email": "morgan.ellis@acme-pantry.example",
+      "firstName": "Morgan",
+      "lastName": "Ellis",
+      "role": "member"
+    },
+    {
+      "userID": "u_riley",
+      "email": "riley.santos@acme-pantry.example",
+      "firstName": "Riley",
+      "lastName": "Santos",
+      "role": "member"
+    },
+    {
+      "userID": "u_sam",
+      "email": "sam.okafor@acme-pantry.example",
+      "firstName": "Sam",
+      "lastName": "Okafor",
+      "role": "read_only"
+    }
+  ],
+  "reviewSettings": {
+    "is_config_review_required": false,
+    "is_metric_review_required": true
+  },
+  "details": {
+    "gateChecks": {
+      "driver_tips_v2": {
+        "has_production_checks_in_last_7_days": false
+      },
+      "seasonal_bundles": {
+        "has_production_checks_in_last_7_days": true
+      }
+    },
+    "cumulativeExposures": {
+      "delivery_eta_display": [
+        {
+          "groupID": "eta_control",
+          "groupName": "Single time",
+          "results": [
+            {
+              "date": "2026-10-12",
+              "exposures": 7800
+            },
+            {
+              "date": "2026-10-13",
+              "exposures": 8120
+            }
+          ]
+        },
+        {
+          "groupID": "eta_range",
+          "groupName": "Range",
+          "results": [
+            {
+              "date": "2026-10-12",
+              "exposures": 7700
+            },
+            {
+              "date": "2026-10-13",
+              "exposures": 8010
+            }
+          ]
+        },
+        {
+          "groupID": "eta_live",
+          "groupName": "Live map",
+          "results": [
+            {
+              "date": "2026-10-12",
+              "exposures": 7900
+            },
+            {
+              "date": "2026-10-13",
+              "exposures": 8180
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "tool": {
     "name": "statsig-audit",
-    "version": "0.1.0"
+    "version": "0.2.0"
   },
   "evaluatedAt": "2026-10-14T09:00:00.000Z",
   "snapshot": {

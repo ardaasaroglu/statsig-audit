@@ -1,6 +1,6 @@
 # Snapshot format
 
-A snapshot is everything the checks read, in one JSON object. The CLI builds one from the Console API on every live run. `--save-snapshot <file>` writes it to disk, and `--input <file>` audits a saved one without calling the API. The Claude Code plugin also assembles a snapshot from Statsig MCP read tools when no key is set.
+A snapshot is everything the checks read, in one JSON object. The CLI builds one from the Console API on every live run. `--save-snapshot <file>` writes it to disk, and `--input <file>` audits a saved one without calling the API. The Claude plugin assembles one from the read tools of the user's own Statsig MCP connection, or takes a saved one, and audits it offline with a bundled copy of the same engine.
 
 A snapshot holds project data: entity names, rules, targeting values, owner names and emails. It never holds the API key. Keep snapshots out of public repositories.
 
@@ -33,7 +33,7 @@ A snapshot holds project data: entity names, rules, targeting values, owner name
 * Each list holds items **as the Console API returns them**, with the same field names. The loader keeps only the fields the checks use and drops the rest, including dynamic config values, rule return values and audit log change bodies.
 * A list that is missing or `null` means "not collected". Checks that need it are reported as could not run, never as clean. Say why under `unavailable`, keyed by the list name.
 * `collected.includesArchivedGates` should be `false` when archived gates could not be read. Then a reference to a gate that is not in the list is reported as "not found, may be archived" instead of "does not exist".
-* `source` is free text that the report shows. The CLI writes `console-api`; the plugin writes `mcp`.
+* `source` is free text that the report shows. The CLI writes `console-api`. The plugin writes `mcp` for a snapshot it assembles from Statsig MCP tools.
 
 ## Lists and the API calls behind them
 
@@ -66,4 +66,4 @@ Filled only by `--deep`:
 
 ## Example
 
-[test/fixtures/snapshot.json](../test/fixtures/snapshot.json) is a complete snapshot of a fictional project. It drives the tests and the sample report.
+[test/fixtures/snapshot.json](../test/fixtures/snapshot.json) is a complete snapshot of a fictional project. It drives the tests and the sample report. The Claude plugin bundles a copy as `assets/sample-snapshot.json` in its skill folder, with one extra `$comment` field that the loader ignores.

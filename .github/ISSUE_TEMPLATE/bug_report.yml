@@ -16,8 +16,8 @@ body:
     id: where
     attributes:
       label: Where
-      description: statsig-audit version, how you ran it (npx, node, GitHub Action, Claude Code plugin), OS and Node version.
-      placeholder: 0.1.0, npx, Ubuntu 24.04, Node 22
+      description: statsig-audit version, how you ran it (npx, node, GitHub Action, or the Claude plugin on claude.ai, Cowork or Claude Code), OS and Node version.
+      placeholder: 0.2.0, npx, Ubuntu 24.04, Node 22
     validations:
       required: true
   - type: textarea

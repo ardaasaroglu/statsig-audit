@@ -1,6 +1,6 @@
-import { readFileSync } from "node:fs";
+// The tool's name and version. They are literals, not read from package.json, so the copy
+// of the engine inside the Claude plugin works without a package.json next to it.
+// test/repo.test.js checks that they match package.json.
 
-const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
-
-export const VERSION = pkg.version;
-export const NAME = pkg.name;
+export const NAME = "statsig-audit";
+export const VERSION = "0.2.0";

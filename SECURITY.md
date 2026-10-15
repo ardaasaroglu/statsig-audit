@@ -22,10 +22,11 @@ statsig-audit runs with a key that can read a whole Statsig project. This page s
 * **A snapshot**, only with `--save-snapshot`. It holds project data: entity names, rules, targeting values, owner names and emails. A warning says so every time. Dynamic config values, rule return values and audit log change bodies are dropped before anything is written.
 * Treat reports and snapshots as internal documents. In a public GitHub repository, job summaries and workflow artifacts are public too.
 
-## The Claude Code plugin
+## The Claude plugin
 
-* The skill runs the same CLI. It checks whether the key is set with a command that prints nothing, and deletes its temporary files when it is done.
-* When it reads through a Statsig MCP server instead, the skill tells the model to use read tools only and never a create, update, archive or cleanup tool. That is an instruction to a model, not a technical control. For a technical control, connect the MCP server with a read-only key.
+* **It never handles a key.** The plugin in `plugin/` has no settings, never reads a key or any other value from `process.env`, and makes no network calls. Its only code is a runner, `run.mjs`, and an offline copy of the audit engine, which is generated from `src/` without the HTTP client, the API reader or the CLI. The build refuses to copy a module that calls `fetch`, imports a network module or reads the environment, and a test checks the plugin folder for the same.
+* **It reads through your own Statsig connection.** The skill reads the project through the Statsig MCP connection the user adds, and tells the model to use read tools only, never a create, update, archive or cleanup tool. That is an instruction to a model, not a technical control. For a technical control, connect Statsig with a read-only role.
+* **It cleans up.** The snapshot and report go to a private temporary directory, which the skill deletes when it is done. [PRIVACY.md](PRIVACY.md) has the details.
 
 ## Reporting a vulnerability
 

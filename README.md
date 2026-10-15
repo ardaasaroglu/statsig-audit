@@ -8,8 +8,9 @@
 <a href="#quickstart"><strong>Quickstart</strong></a> ·
 <a href="#checks">Checks</a> ·
 <a href="#github-action">GitHub Action</a> ·
-<a href="#claude-code-plugin">Claude Code plugin</a> ·
-<a href="SECURITY.md">Security</a>
+<a href="#claude-plugin">Claude plugin</a> ·
+<a href="SECURITY.md">Security</a> ·
+<a href="PRIVACY.md">Privacy</a>
 </p>
 
 <p align="center"><a href="https://github.com/ardaasaroglu/statsig-audit/actions/workflows/ci.yml"><img src="https://github.com/ardaasaroglu/statsig-audit/actions/workflows/ci.yml/badge.svg" alt="ci"></a></p>
@@ -50,19 +51,19 @@ $env:STATSIG_CONSOLE_API_KEY = [Net.NetworkCredential]::new('', (Read-Host -AsSe
 **3. Run it.**
 
 ```bash
-npx github:ardaasaroglu/statsig-audit#v0.1.0 --out statsig-audit-report.md
+npx github:ardaasaroglu/statsig-audit#v0.2.0 --out statsig-audit-report.md
 ```
 
 The report goes to the file, and a one-line summary to the terminal. Without `--out`, the report is printed. Add `--format json` for JSON.
 
-`#v0.1.0` pins a release tag, so the code that receives your key does not change under you. Without it, npx installs whatever is on `main` at that moment. Move to a newer tag on purpose, after reading its [changelog](CHANGELOG.md).
+`#v0.2.0` pins a release tag, so the code that receives your key does not change under you. Without it, npx installs whatever is on `main` at that moment. Move to a newer tag on purpose, after reading its [changelog](CHANGELOG.md).
 
 **Try it without a key.** The repository holds a snapshot of a fictional project:
 
 ```bash
 git clone https://github.com/ardaasaroglu/statsig-audit.git
 cd statsig-audit
-node bin/statsig-audit.js --input test/fixtures/snapshot.json --config examples/.statsig-audit.json
+node cli/statsig-audit.js --input test/fixtures/snapshot.json --config examples/.statsig-audit.json
 ```
 
 That prints the [sample report](examples/sample-report.md).
@@ -143,7 +144,7 @@ Every threshold and its default is listed in [docs/config.schema.json](docs/conf
     STATSIG_CONSOLE_API_KEY: ${{ secrets.STATSIG_CONSOLE_API_KEY }}
 ```
 
-The action receives your key, so the example pins it to the full commit of a release, like the `#v0.1.0` tag for npx. `@v0` also works and follows the latest 0.x release.
+The action receives your key, so the example pins it to the full commit of a release, like the `#v0.2.0` tag for npx. `@v0` also works and follows the latest 0.x release.
 
 The action writes the report to `statsig-audit-report.md` (or `.json`) and to the job summary, and fails the step when `fail-on` is met. Inputs: `fail-on`, `format`, `output`, `config`, `checks`, `deep`, `users`, `input` and `job-summary`. Outputs: `report`, `findings`, `high`, `medium`, `low` and `score`. It runs the `node` already on the runner, which must be version 20 or newer. GitHub-hosted runners include Node.js. On a self-hosted runner, add `actions/setup-node` before it.
 
@@ -151,22 +152,22 @@ The action writes the report to `statsig-audit-report.md` (or `.json`) and to th
 
 The report names your gates, experiments and owners. In a public repository, anyone can read job summaries and download artifacts, so run the audit from a private repository.
 
-## Claude Code plugin
+## Claude plugin
 
-The repository is also a Claude Code plugin with one skill. Install it from a terminal:
+[plugin/](plugin/) is a Claude plugin with one skill. It works on claude.ai, in Cowork and in Claude Code, and it needs no key.
+
+It reads your project through a Statsig MCP connection that you add yourself (Statsig's MCP server at `https://api.statsig.com/v3/mcp`, with your own Statsig sign-in), and only with read tools. It writes the data to a snapshot in a temporary directory, audits it with a bundled offline copy of the engine, and deletes it. Then it writes an action plan: this week (high), this quarter (medium, by owner) and hygiene (low). It can also audit a snapshot file saved with `--save-snapshot`, or a fictional sample project, with no Statsig account at all. The plugin itself makes no network calls, and it is told never to call a create, update, delete, archive or cleanup tool.
+
+Install it from Claude's plugin directory once it is listed there. In Claude Code, you can also install it from this repository:
 
 ```bash
 claude plugin marketplace add ardaasaroglu/statsig-audit
 claude plugin install statsig-audit@statsig-audit
 ```
 
-Then, in Claude Code:
+Then connect Statsig's MCP server (`claude mcp add --transport http statsig https://api.statsig.com/v3/mcp`, then `/mcp` to sign in) and ask for an audit, or run `/statsig-audit:audit`. [plugin/README.md](plugin/README.md) covers claude.ai and Cowork, example prompts and troubleshooting, and [PRIVACY.md](PRIVACY.md) says what the plugin reads and sends.
 
-```text
-/statsig-audit:audit
-```
-
-The skill runs the same CLI. With `STATSIG_CONSOLE_API_KEY` set, it uses the Console API. Without it, and with a Statsig MCP server connected, it reads the project through MCP read tools only, builds a snapshot in a temporary directory, audits it with `--input` and deletes it. It is told never to call a create, update, delete, archive or cleanup tool. Then it writes an action plan: this week (high), this quarter (medium, by owner) and hygiene (low).
+The engine copy in `plugin/skills/audit/scripts/engine/` is generated from `src/` by `npm run build:plugin`, and CI fails when it is out of date.
 
 ## Checks
 
@@ -215,7 +216,7 @@ The skill runs the same CLI. With `STATSIG_CONSOLE_API_KEY` set, it uses the Con
 * Requests are throttled to 10 per second and 850 per 15 minutes. A 429 or a 5xx is retried with exponential backoff and jitter, at most four times.
 * Owner emails are masked in reports unless you pass `--show-emails`. Dynamic config values, rule return values and audit log change bodies are never written to a snapshot.
 
-[SECURITY.md](SECURITY.md) has the details and says how to report a vulnerability.
+[SECURITY.md](SECURITY.md) has the details and says how to report a vulnerability. [PRIVACY.md](PRIVACY.md) says what the CLI, the Action and the Claude plugin read, send and store.
 
 ## FAQ
 

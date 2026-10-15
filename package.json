@@ -1,14 +1,14 @@
 {
   "name": "statsig-audit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "A read-only hygiene audit for your Statsig project: stale gates, forgotten rollouts, broken targeting, experiments past their plan, metric trust. Markdown or JSON report, CI friendly. Unofficial.",
   "type": "module",
   "bin": {
-    "statsig-audit": "bin/statsig-audit.js"
+    "statsig-audit": "cli/statsig-audit.js"
   },
   "files": [
-    "bin/",
+    "cli/",
     "src/"
   ],
   "engines": {
@@ -18,7 +18,8 @@
     "test": "node --test test/*.test.js",
     "golden": "node scripts/update-golden.mjs",
     "docs": "node scripts/build-docs.mjs",
-    "check:generated": "node scripts/update-golden.mjs --check && node scripts/build-docs.mjs --check"
+    "build:plugin": "node scripts/build-plugin.mjs",
+    "check:generated": "node scripts/update-golden.mjs --check && node scripts/build-docs.mjs --check && node scripts/build-plugin.mjs --check"
   },
   "author": {
     "name": "Arda Asaroglu",

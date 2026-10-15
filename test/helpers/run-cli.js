@@ -5,7 +5,7 @@
 import { spawn } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
-export const BIN = fileURLToPath(new URL("../../bin/statsig-audit.js", import.meta.url));
+export const CLI = fileURLToPath(new URL("../../cli/statsig-audit.js", import.meta.url));
 const PASS_THROUGH = ["PATH", "Path", "SystemRoot", "SYSTEMROOT", "TEMP", "TMP", "TMPDIR", "HOME", "USERPROFILE", "APPDATA", "LOCALAPPDATA", "ComSpec"];
 
 export function cleanEnv(extra = {}) {
@@ -16,7 +16,7 @@ export function cleanEnv(extra = {}) {
 
 export function runCli(args, { env = {}, cwd } = {}) {
   return new Promise((resolve, reject) => {
-    const child = spawn(process.execPath, [BIN, ...args], { env: cleanEnv(env), cwd, stdio: ["ignore", "pipe", "pipe"] });
+    const child = spawn(process.execPath, [CLI, ...args], { env: cleanEnv(env), cwd, stdio: ["ignore", "pipe", "pipe"] });
     let stdout = "";
     let stderr = "";
     child.stdout.on("data", (d) => (stdout += d));
