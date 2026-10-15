@@ -1,6 +1,6 @@
 {
   "name": "statsig-audit",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "description": "A read-only hygiene audit for your Statsig project: stale gates, forgotten rollouts, broken targeting, experiments past their plan, metric trust. Markdown or JSON report, CI friendly. Unofficial.",
   "type": "module",

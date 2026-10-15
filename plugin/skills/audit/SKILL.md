@@ -54,15 +54,18 @@ Use this when the user attached or named a snapshot file. The statsig-audit comm
 
 ### Source 3: the bundled sample project
 
-Use this when the user asks to try the audit or see a demo, or has nothing connected and wants to see what it does. The snapshot is `${CLAUDE_SKILL_DIR}/assets/sample-snapshot.json`, a fictional project called Acme Pantry. Say clearly in your answer that the results are for a fictional sample project, not the user's.
+Use this when the user asks to try the audit or see a demo, or has nothing connected and wants to see what it does. The snapshot is `${CLAUDE_SKILL_DIR}/assets/sample-snapshot.json`, a fictional project called Acme Pantry. Say clearly in your answer that the results are for a fictional sample project, not the user's, and that its console links point to that fictional project, so they will not open.
 
 ### None of these
 
-Explain how to connect Statsig's MCP server, offer to run the sample project instead, and stop:
+If the user has not said they use Statsig, first ask which feature flag tool they use. This skill only audits Statsig projects; for another tool, say so and stop.
+
+For a Statsig user, explain how to connect Statsig's MCP server, offer to run the sample project instead, and stop:
 
 * **claude.ai and Cowork:** add a custom connector in your connector settings with the URL `https://api.statsig.com/v3/mcp`, then sign in to Statsig when asked.
 * **Claude Code:** run `claude mcp add --transport http statsig https://api.statsig.com/v3/mcp` in a terminal, then run `/mcp` in Claude Code and sign in to Statsig.
 * Statsig's guide: https://docs.statsig.com/integrations/mcp/overview
+* If they already use the statsig-audit command-line tool, a snapshot it saved with `--save-snapshot` works too: they can attach it (source 2).
 
 ## Step 2: run the audit
 
@@ -84,7 +87,8 @@ Explain how to connect Statsig's MCP server, offer to run the sample project ins
    Add `--config <file>` when the user names a config file, or when the working directory has a `.statsig-audit.json`.
 
    * Exit code 0: the report is written.
-   * Exit code 2: a usage, config or snapshot problem. For a snapshot you assembled, fix it from the message and run again. Otherwise show the message and stop.
+   * Exit code 2 and `<dir>/report.json` exists: the report is written, but one or more checks failed to run. The message names them. Go on to step 4 and list those checks under "could not run" in the plan.
+   * Exit code 2 and no `<dir>/report.json`: a usage, config or snapshot problem. For a snapshot you assembled, fix it from the message and run again. Otherwise show the message and stop.
 
 4. Read `<dir>/report.json`. It has `summary` (counts and the hygiene score), `checks` (each check's status, and the reason when it could not run) and `findings` (each with `severity`, `entity`, `message` and `action`).
 5. Delete `<dir>`, snapshot included:

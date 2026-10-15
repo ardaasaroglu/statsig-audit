@@ -3,4 +3,4 @@
 // test/repo.test.js checks that they match package.json.
 
 export const NAME = "statsig-audit";
-export const VERSION = "0.2.0";
+export const VERSION = "0.2.1";

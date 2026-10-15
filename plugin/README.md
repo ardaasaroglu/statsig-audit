@@ -46,7 +46,7 @@ First connect Statsig's own MCP server under your Statsig account. Then ask Clau
 
 Statsig's own setup guide is at https://docs.statsig.com/integrations/mcp/overview.
 
-You can also try the audit without a Statsig account. The plugin includes a fictional sample project, and Claude says clearly when a result comes from it.
+You can also try the audit without a Statsig account. The plugin includes a fictional sample project, and Claude says clearly when a result comes from it. The sample's console links point to that fictional project, so they do not open.
 
 ## Example prompts
 

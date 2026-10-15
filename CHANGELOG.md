@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1 (2026-10-16)
+
+Plugin fixes from a review in Cowork. The command-line tool and the GitHub Action are unchanged.
+
+* When some checks fail to run, the runner still writes the report and exits with 2. The skill now reads that report and lists the failed checks under "could not run" instead of stopping.
+* With nothing connected, the skill first asks which feature flag tool the user has, since it only audits Statsig, and mentions that a snapshot saved by the command-line tool works too.
+* The sample project's answers say its console links point to the fictional project and do not open.
+
 ## 0.2.0 (2026-10-15)
 
 The Claude plugin now works on claude.ai and in Cowork as well as in Claude Code, and the plugin itself no longer touches the network or a key. The command line tool and the GitHub Action work as before.

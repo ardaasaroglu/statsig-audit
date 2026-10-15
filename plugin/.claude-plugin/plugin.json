@@ -1,7 +1,7 @@
 {
   "name": "statsig-audit",
   "displayName": "Statsig Audit (unofficial)",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Unofficial, read-only hygiene audit of a Statsig project that finds stale gates, forgotten rollouts, broken targeting and experiments past their plan, and turns them into a prioritized action plan with owners.",
   "author": {
     "name": "Arda Asaroglu",
